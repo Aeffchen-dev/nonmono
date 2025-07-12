@@ -62,12 +62,11 @@ export function CategorySelector({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-full max-w-[500px] h-[calc(100vh-200px)] md:h-[calc(100vh-130px)] bg-background border-0 p-0 overflow-hidden [&>button]:hidden" style={{ borderRadius: '16px' }}>
+      <DialogContent className="w-full max-w-[500px] mx-auto bg-background border-0 rounded-2xl p-0 overflow-hidden [&>button]:hidden" style={{ height: 'calc(100vh - 200px)' }}>
         <DialogDescription className="sr-only">
           Wählen Sie die Kategorien aus, die Sie sehen möchten
         </DialogDescription>
-        <div className="flex flex-col h-full relative"
-             style={{ width: '500px' }}>
+        <div className="flex flex-col h-full relative w-full">
           {/* Close Button */}
           <button
             onClick={handleClose}
