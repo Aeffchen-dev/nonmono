@@ -68,7 +68,11 @@ export default {
 					'category-bg': 'hsl(var(--quiz-category-bg))',
 					'category-text': 'hsl(var(--quiz-category-text))',
 					background: 'hsl(var(--quiz-background))',
-					surface: 'hsl(var(--quiz-surface))'
+					surface: 'hsl(var(--quiz-surface))',
+					'fuck-bg': 'hsl(var(--quiz-fuck-bg))',
+					'fuck-text': 'hsl(var(--quiz-fuck-text))',
+					'friends-bg': 'hsl(var(--quiz-friends-bg))',
+					'friends-text': 'hsl(var(--quiz-friends-text))'
 				}
 			},
 			backgroundImage: {

@@ -19,6 +19,29 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
 
   const minSwipeDistance = 50;
 
+  // Get category-specific colors
+  const getCategoryColors = (category: string) => {
+    switch (category.toLowerCase()) {
+      case 'fuck':
+        return {
+          bg: 'bg-quiz-fuck-bg',
+          text: 'text-quiz-fuck-text'
+        };
+      case 'friends':
+        return {
+          bg: 'bg-quiz-friends-bg', 
+          text: 'text-quiz-friends-text'
+        };
+      default:
+        return {
+          bg: 'bg-quiz-category-bg',
+          text: 'text-quiz-category-text'
+        };
+    }
+  };
+
+  const categoryColors = getCategoryColors(question.category);
+
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -50,9 +73,9 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       onTouchEnd={onTouchEnd}
     >
       {/* Category Strip */}
-      <div className="absolute left-0 top-0 h-full w-12 bg-quiz-category-bg flex items-center justify-center">
+      <div className={`absolute left-0 top-0 h-full w-12 ${categoryColors.bg} flex items-center justify-center`}>
         <div className="transform -rotate-90 whitespace-nowrap">
-          <span className="text-quiz-category-text font-bold text-sm tracking-wide uppercase">
+          <span className={`${categoryColors.text} font-bold text-sm tracking-wide uppercase`}>
             {Array(20).fill(question.category).join('   ')}
           </span>
         </div>

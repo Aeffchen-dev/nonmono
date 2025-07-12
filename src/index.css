@@ -46,6 +46,12 @@ All colors MUST be HSL.
     --quiz-background: 0 0% 7%;
     --quiz-surface: 0 0% 12%;
     
+    /* Category-specific colors */
+    --quiz-fuck-bg: 0 100% 50%;     /* Bright red for Fuck category */
+    --quiz-fuck-text: 0 0% 98%;     /* White text on red */
+    --quiz-friends-bg: 280 100% 60%; /* Purple for Friends category */
+    --quiz-friends-text: 0 0% 98%;   /* White text on purple */
+    
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(290 100% 80%));
     --gradient-surface: linear-gradient(135deg, hsl(0 0% 10%), hsl(0 0% 15%));
