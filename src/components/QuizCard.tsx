@@ -42,6 +42,11 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
           bg: 'bg-quiz-party-bg',
           text: 'text-quiz-party-text'
         };
+      case 'family':
+        return {
+          bg: 'bg-quiz-family-bg',
+          text: 'text-quiz-family-text'
+        };
       default:
         return {
           bg: 'bg-quiz-category-bg',

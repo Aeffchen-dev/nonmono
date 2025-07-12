@@ -76,7 +76,9 @@ export default {
 					'self-reflection-bg': 'hsl(var(--quiz-self-reflection-bg))',
 					'self-reflection-text': 'hsl(var(--quiz-self-reflection-text))',
 					'party-bg': 'hsl(var(--quiz-party-bg))',
-					'party-text': 'hsl(var(--quiz-party-text))'
+					'party-text': 'hsl(var(--quiz-party-text))',
+					'family-bg': 'hsl(var(--quiz-family-bg))',
+					'family-text': 'hsl(var(--quiz-family-text))'
 				}
 			},
 			backgroundImage: {
