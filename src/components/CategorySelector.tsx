@@ -66,7 +66,7 @@ export function CategorySelector({
         <DialogDescription className="sr-only">
           Wählen Sie die Kategorien aus, die Sie sehen möchten
         </DialogDescription>
-        <div className="flex flex-col h-full relative w-full">
+        <div className="flex flex-col h-[calc(100vh-200px)] md:h-[calc(100vh-130px)] relative w-full">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -91,7 +91,7 @@ export function CategorySelector({
               return (
                 <div 
                   key={category}
-                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] cursor-pointer`}
+                  className={`flex items-center justify-between p-4 border-l-8 ${colorClasses} bg-[#161616] cursor-pointer`}
                   style={{ borderRadius: '4px' }}
                   onClick={() => handleCategoryToggle(category)}
                 >
