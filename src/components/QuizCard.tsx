@@ -144,8 +144,8 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       {/* Category Strip */}
       <div className={`absolute left-0 top-0 h-full w-8 ${categoryColors.bg} flex items-center justify-center`}>
         <div className="transform -rotate-90 whitespace-nowrap">
-          <span className={`${categoryColors.text} font-bold text-sm tracking-wide uppercase`} style={{ wordSpacing: '8px' }}>
-            {Array(20).fill(question.category).join(' ')}
+          <span className={`${categoryColors.text} font-bold text-sm tracking-wide uppercase`}>
+            {Array(20).fill(question.category).join('        ')}
           </span>
         </div>
       </div>
