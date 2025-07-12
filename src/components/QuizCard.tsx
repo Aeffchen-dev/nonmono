@@ -34,7 +34,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       const words = question.question.split(' ');
       const containerWidth = containerRef.current.getBoundingClientRect().width;
       
-      // Create temporary element to measure word width
+      // Create temporary element to measure word width with exact same styles
       const tempElement = document.createElement('span');
       tempElement.style.cssText = `
         position: absolute;
@@ -43,22 +43,29 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
         font-size: 3rem;
         font-family: inherit;
         font-weight: normal;
+        padding: 0;
+        margin: 0;
+        border: 0;
       `;
-      document.body.appendChild(tempElement);
+      
+      // Add to same container to inherit styles
+      containerRef.current.appendChild(tempElement);
 
       const processedWords = words.map((word, index) => {
         tempElement.textContent = word;
         const wordWidth = tempElement.getBoundingClientRect().width;
         
-        // Only apply hyphenation to words that are too long
-        const needsHyphenation = wordWidth > containerWidth * 0.8; // 80% threshold
+        // Only apply hyphenation if word is actually wider than available space
+        // Use full container width minus some padding buffer
+        const needsHyphenation = wordWidth > (containerWidth - 20);
         
         return (
           <span 
             key={index}
             style={{
               hyphens: needsHyphenation ? 'auto' : 'none',
-              overflowWrap: needsHyphenation ? 'break-word' : 'normal'
+              overflowWrap: needsHyphenation ? 'break-word' : 'normal',
+              wordBreak: 'normal'
             }}
             lang="de"
           >
@@ -68,11 +75,11 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
         );
       });
 
-      document.body.removeChild(tempElement);
+      containerRef.current.removeChild(tempElement);
       setProcessedText(processedWords);
     };
 
-    const timeoutId = setTimeout(processText, 10);
+    const timeoutId = setTimeout(processText, 50);
     window.addEventListener('resize', processText);
     
     return () => {
