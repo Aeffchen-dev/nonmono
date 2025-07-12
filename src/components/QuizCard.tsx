@@ -153,11 +153,11 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       </div>
 
       {/* Main Content */}
-      <div className="ml-8 h-full flex flex-col justify-center pl-4 pr-4 lg:pl-8 lg:pr-8">
+      <div className="ml-8 h-full flex flex-col justify-center px-8 lg:px-4">
 
         {/* Question */}
         <div className="flex-1 flex items-start justify-start text-left pt-16 w-full">
-          <h1 className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight break-words overflow-wrap-anywhere word-break w-full max-w-full hyphens-auto" style={{ hyphens: 'auto' }} lang="de">
+          <h1 className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight w-full max-w-full hyphens-auto" style={{ hyphens: 'auto', overflowWrap: 'break-word' }} lang="de">
             {question.question}
           </h1>
         </div>
