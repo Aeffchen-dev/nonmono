@@ -86,7 +86,7 @@ export function QuizApp() {
       </div>
 
       {/* Main Quiz Container */}
-      <div className="h-[calc(100vh-60px)] h-[calc(100svh-60px)] flex items-start justify-center px-4 pt-4 overflow-hidden">
+      <div className="h-[calc(100vh-60px)] h-[calc(100svh-60px)] flex flex-col items-center px-4 pt-4 overflow-hidden">
         <div className="w-full h-[calc(100vh-200px)] h-[calc(100svh-200px)] md:h-[calc(100vh-130px)] md:h-[calc(100svh-130px)]">
           {loading ? (
             <div className="h-full flex items-center justify-center">
@@ -110,7 +110,7 @@ export function QuizApp() {
         <div className="flex justify-center pt-4">
           <a 
             href="mailto:hello@relationshipbydesign.de" 
-            className="text-white font-normal text-xs hover:underline"
+            className="text-white font-normal text-xs underline"
           >
             Frage einreichen
           </a>
