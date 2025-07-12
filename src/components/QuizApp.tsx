@@ -76,7 +76,7 @@ export function QuizApp() {
   }, [currentIndex]);
 
   return (
-    <div className="min-h-screen bg-quiz-background overflow-hidden">
+    <div className="h-screen bg-background overflow-hidden">
       {/* App Header */}
       <div className="bg-black">
         <div className="flex justify-between items-center px-6 py-3">
@@ -86,8 +86,8 @@ export function QuizApp() {
       </div>
 
       {/* Main Quiz Container */}
-      <div className="h-[calc(100vh-60px)] h-[calc(100dvh-60px)] flex justify-center p-4 pt-4">
-        <div className="w-full max-w-2xl h-full max-h-[calc(100vh-160px)] max-h-[calc(100dvh-160px)]">
+      <div className="h-[calc(100vh-60px)] flex items-center justify-center px-4">
+        <div className="w-full max-w-2xl h-[90vh] max-h-[90vh]">
           {loading ? (
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Lade Fragen...</div>
@@ -106,8 +106,6 @@ export function QuizApp() {
           )}
         </div>
       </div>
-
-
     </div>
   );
 }
