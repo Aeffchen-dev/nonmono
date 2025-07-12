@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Button } from '@/components/ui/button';
 
 interface CategorySelectorProps {
   open: boolean;
@@ -21,20 +20,25 @@ export function CategorySelector({
 }: CategorySelectorProps) {
   const [tempSelection, setTempSelection] = useState<string[]>(selectedCategories);
 
+  // Update temp selection when selectedCategories prop changes
+  useEffect(() => {
+    setTempSelection(selectedCategories);
+  }, [selectedCategories]);
+
   const getCategoryColors = (category: string) => {
     switch (category.toLowerCase()) {
       case 'fuck':
-        return 'border-l-red-500 bg-red-500/10';
+        return 'border-l-red-500';
       case 'friends':
-        return 'border-l-purple-500 bg-purple-500/10';
+        return 'border-l-purple-500';
       case 'family':
-        return 'border-l-green-500 bg-green-500/10';
+        return 'border-l-green-500';
       case 'self reflection':
-        return 'border-l-blue-500 bg-blue-500/10';
+        return 'border-l-blue-500';
       case 'party':
-        return 'border-l-yellow-500 bg-yellow-500/10';
+        return 'border-l-yellow-500';
       default:
-        return 'border-l-gray-500 bg-gray-500/10';
+        return 'border-l-gray-500';
     }
   };
 
@@ -51,34 +55,36 @@ export function CategorySelector({
     onOpenChange(false);
   };
 
-  const handleCancel = () => {
-    setTempSelection(selectedCategories);
+  const handleClose = () => {
+    onCategoriesChange(tempSelection); // Apply changes when closing
     onOpenChange(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-full max-w-[500px] h-full max-h-[600px] bg-background border-0 rounded-2xl p-0 overflow-hidden">
-        <div className="flex flex-col h-full">
+      <DialogContent className="w-full max-w-[500px] h-full max-h-[600px] bg-background border-0 rounded-2xl p-0 overflow-hidden shadow-card">
+        <DialogDescription className="sr-only">
+          Wählen Sie die Kategorien aus, die Sie sehen möchten
+        </DialogDescription>
+        <div className="flex flex-col h-full relative"
+             style={{ width: '500px', height: '600px' }}>
+          {/* Close Button */}
+          <button
+            onClick={handleClose}
+            className="absolute right-6 top-6 z-10 text-white hover:bg-white/10 p-2 rounded-full transition-colors"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
           {/* Header */}
           <DialogHeader className="p-6 pb-4">
-            <div className="flex items-center justify-between">
-              <DialogTitle className="text-white text-xl font-normal">
-                Kategorien wählen
-              </DialogTitle>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={handleCancel}
-                className="text-white hover:bg-white/10"
-              >
-                <X className="h-6 w-6" />
-              </Button>
-            </div>
+            <DialogTitle className="text-white text-xl font-normal">
+              Kategorien wählen
+            </DialogTitle>
           </DialogHeader>
 
           {/* Categories List */}
-          <div className="flex-1 px-6 space-y-4 overflow-y-auto">
+          <div className="flex-1 px-6 space-y-3 overflow-y-auto">
             {categories.map((category) => {
               const isSelected = tempSelection.includes(category);
               const colorClasses = getCategoryColors(category);
@@ -86,10 +92,10 @@ export function CategorySelector({
               return (
                 <div 
                   key={category}
-                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} rounded-r-lg cursor-pointer transition-all duration-200 hover:bg-opacity-20`}
+                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] rounded-r-md cursor-pointer transition-all duration-200 hover:bg-[#202020]`}
                   onClick={() => handleCategoryToggle(category)}
                 >
-                  <span className="text-white font-bold text-lg uppercase tracking-wide">
+                  <span className="text-white font-bold text-sm uppercase tracking-wide">
                     {category}
                   </span>
                   <Checkbox
@@ -100,23 +106,6 @@ export function CategorySelector({
                 </div>
               );
             })}
-          </div>
-
-          {/* Footer */}
-          <div className="p-6 pt-4 flex items-center justify-between">
-            <Button
-              variant="ghost"
-              onClick={handleCancel}
-              className="text-white font-normal hover:bg-white/10"
-            >
-              Kategorien wählen
-            </Button>
-            <Button
-              onClick={handleApply}
-              className="text-black bg-white hover:bg-white/90 font-normal"
-            >
-              Frage einreichen
-            </Button>
           </div>
         </div>
       </DialogContent>
