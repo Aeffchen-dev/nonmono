@@ -109,7 +109,7 @@ export function CategorySelector({
                       }}
                     >
                       <div
-                        className={`w-4 h-4 border border-white flex items-center justify-center bg-transparent`}
+                        className={`w-4 h-4 border border-white flex items-center justify-center ${isSelected ? 'bg-white' : 'bg-transparent'}`}
                         style={{ 
                           width: '16px', 
                           height: '16px', 
@@ -120,7 +120,7 @@ export function CategorySelector({
                       >
                         {isSelected && (
                           <Check 
-                            className="text-white" 
+                            className="text-black" 
                             style={{ width: '14px', height: '14px' }}
                             strokeWidth={2}
                           />
