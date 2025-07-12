@@ -40,22 +40,20 @@ export function QuizApp() {
 
   const nextQuestion = () => {
     if (currentIndex < questions.length - 1) {
-      setAnimationClass('animate-slide-out-left');
+      setAnimationClass('animate-slide-out-right');
       setTimeout(() => {
         setCurrentIndex(prev => prev + 1);
-        setAnimationClass('animate-slide-in-right');
-        setTimeout(() => setAnimationClass(''), 500);
+        setAnimationClass('');
       }, 300);
     }
   };
 
   const prevQuestion = () => {
     if (currentIndex > 0) {
-      setAnimationClass('animate-slide-out-right');
+      setAnimationClass('animate-slide-out-left');
       setTimeout(() => {
         setCurrentIndex(prev => prev - 1);
-        setAnimationClass('animate-slide-in-left');
-        setTimeout(() => setAnimationClass(''), 500);
+        setAnimationClass('');
       }, 300);
     }
   };
@@ -85,18 +83,35 @@ export function QuizApp() {
 
       {/* Main Quiz Container */}
       <div className="h-[calc(100vh-60px)] h-[calc(100dvh-60px)] flex justify-center p-4 pt-4">
-        <div className="w-full max-w-2xl h-full max-h-[calc(100vh-160px)] max-h-[calc(100dvh-160px)]">
+        <div className="w-full max-w-2xl h-full max-h-[calc(100vh-160px)] max-h-[calc(100dvh-160px)] relative">
           {loading ? (
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Lade Fragen...</div>
             </div>
           ) : questions.length > 0 ? (
-            <QuizCard
-              question={questions[currentIndex]}
-              onSwipeLeft={nextQuestion}
-              onSwipeRight={prevQuestion}
-              animationClass={animationClass}
-            />
+            <div className="relative h-full w-full">
+              {/* Next Card (bottom card) */}
+              {currentIndex + 1 < questions.length && (
+                <div className="absolute inset-0 transform translate-y-2 scale-95 opacity-80 z-10">
+                  <QuizCard
+                    question={questions[currentIndex + 1]}
+                    onSwipeLeft={() => {}}
+                    onSwipeRight={() => {}}
+                    animationClass=""
+                  />
+                </div>
+              )}
+              
+              {/* Current Card (top card) */}
+              <div className={`absolute inset-0 z-20 ${animationClass}`}>
+                <QuizCard
+                  question={questions[currentIndex]}
+                  onSwipeLeft={nextQuestion}
+                  onSwipeRight={prevQuestion}
+                  animationClass=""
+                />
+              </div>
+            </div>
           ) : (
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Keine Fragen verfügbar</div>
