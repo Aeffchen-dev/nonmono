@@ -110,7 +110,7 @@ export function QuizApp() {
         <div className="flex justify-center pt-4">
           <a 
             href="mailto:hello@relationshipbydesign.de" 
-            className="text-white font-normal text-xs underline"
+            className="text-white font-normal text-xs"
           >
             Frage einreichen
           </a>
