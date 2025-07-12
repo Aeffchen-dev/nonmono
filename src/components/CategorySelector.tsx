@@ -76,14 +76,14 @@ export function CategorySelector({
           </button>
 
           {/* Header */}
-          <DialogHeader className="p-6 pb-4">
+          <DialogHeader className="p-6 pb-0">
             <DialogTitle className="text-white text-xl font-normal">
               Kategorien wählen
             </DialogTitle>
           </DialogHeader>
 
           {/* Categories List */}
-          <div className="flex-1 px-6 space-y-3 overflow-y-auto">
+          <div className="flex-1 px-6 pt-6 space-y-3 overflow-y-auto">
             {categories.map((category) => {
               const isSelected = tempSelection.includes(category);
               const colorClasses = getCategoryColors(category);
