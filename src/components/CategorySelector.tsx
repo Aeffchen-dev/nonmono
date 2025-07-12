@@ -92,7 +92,7 @@ export function CategorySelector({
               return (
                 <div 
                   key={category}
-                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] cursor-pointer transition-all duration-200 hover:bg-[#202020]`}
+                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] cursor-pointer`}
                   style={{ borderRadius: '4px' }}
                   onClick={() => handleCategoryToggle(category)}
                 >
