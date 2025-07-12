@@ -55,7 +55,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       {/* Category Strip */}
       <div className="absolute left-0 top-0 h-full w-12 bg-quiz-category-bg flex items-center justify-center">
         <div className="transform -rotate-90 whitespace-nowrap">
-          <span className="text-quiz-category-text font-bold text-sm tracking-widest uppercase">
+          <span className="text-quiz-category-text font-bold text-sm tracking-wide uppercase">
             {Array(8).fill(question.category).join(' ').substring(0, 100)}
           </span>
         </div>
@@ -66,7 +66,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
 
         {/* Question */}
         <div className="flex-1 flex items-start justify-start text-left px-2 pt-16">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground leading-tight">
             {question.question}
           </h1>
         </div>
