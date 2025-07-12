@@ -87,7 +87,7 @@ export function QuizApp() {
 
       {/* Main Quiz Container */}
       <div className="h-[calc(100vh-60px)] h-[calc(100svh-60px)] flex items-start justify-center px-4 pt-4 overflow-hidden">
-        <div className="w-full h-[calc(100vh-220px)] h-[calc(100svh-220px)] md:h-[calc(100vh-150px)] md:h-[calc(100svh-150px)]">
+        <div className="w-full h-[calc(100vh-200px)] h-[calc(100svh-200px)] md:h-[calc(100vh-130px)] md:h-[calc(100svh-130px)]">
           {loading ? (
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Lade Fragen...</div>
