@@ -122,7 +122,7 @@ export function CategorySelector({
                           <X 
                             className="text-white" 
                             style={{ width: '14px', height: '14px' }}
-                            strokeWidth={1}
+                            strokeWidth={2}
                           />
                         )}
                       </div>
