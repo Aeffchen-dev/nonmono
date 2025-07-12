@@ -29,7 +29,9 @@ export function QuizApp() {
       }
       
       if (data) {
-        setQuestions(data);
+        // Shuffle questions randomly
+        const shuffledQuestions = [...data].sort(() => Math.random() - 0.5);
+        setQuestions(shuffledQuestions);
       }
     } catch (error) {
       console.error('Error:', error);
