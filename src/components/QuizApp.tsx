@@ -80,7 +80,7 @@ export function QuizApp() {
       {/* App Header */}
       <div className="bg-black">
         <div className="flex justify-between items-center px-6 py-3">
-          <div className="text-white font-black text-3xl">fff</div>
+          <img src="/lovable-uploads/a22c03d8-1222-4f7b-a9f9-8166377e53f6.png" alt="Logo" className="h-8 w-auto" />
           <div className="text-white font-normal text-xs">Fuck, Friends or Family.</div>
         </div>
       </div>
