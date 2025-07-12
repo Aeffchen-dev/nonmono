@@ -62,12 +62,12 @@ export function CategorySelector({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-full max-w-[500px] h-full max-h-[600px] bg-background border-0 rounded-2xl p-0 overflow-hidden shadow-card [&>button]:hidden">
+      <DialogContent className="w-full max-w-[500px] h-[calc(100vh-200px)] md:h-[calc(100vh-130px)] bg-background border-0 rounded-2xl p-0 overflow-hidden [&>button]:hidden">
         <DialogDescription className="sr-only">
           Wählen Sie die Kategorien aus, die Sie sehen möchten
         </DialogDescription>
         <div className="flex flex-col h-full relative"
-             style={{ width: '500px', height: '600px' }}>
+             style={{ width: '500px' }}>
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -92,8 +92,8 @@ export function CategorySelector({
               return (
                 <div 
                   key={category}
-                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] rounded-r cursor-pointer transition-all duration-200 hover:bg-[#202020]`}
-                  style={{ borderRadius: '0 4px 4px 0' }}
+                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] cursor-pointer transition-all duration-200 hover:bg-[#202020]`}
+                  style={{ borderRadius: '4px' }}
                   onClick={() => handleCategoryToggle(category)}
                 >
                   <span className="text-white font-bold text-sm uppercase tracking-wide">
