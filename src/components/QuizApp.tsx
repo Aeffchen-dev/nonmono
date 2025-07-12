@@ -109,7 +109,7 @@ export function QuizApp() {
         {/* Submit Question Link */}
         <div className="flex justify-center pt-4">
           <a 
-            href="mailto:hello@relationshipbydesign.de" 
+            href="mailto:hello@relationshipbydesign.de?subject=Friends%20App%20Frage" 
             className="text-white font-normal text-xs"
           >
             Frage einreichen
