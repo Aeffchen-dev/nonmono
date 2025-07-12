@@ -63,14 +63,6 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
 
       {/* Main Content */}
       <div className="ml-16 h-full flex flex-col justify-between p-8">
-        {/* Question Type */}
-        <div className="text-center">
-          <div className="inline-block px-4 py-2 border border-foreground/20 rounded-full">
-            <span className="text-sm font-medium text-foreground/80 uppercase tracking-wide">
-              {question.type}
-            </span>
-          </div>
-        </div>
 
         {/* Question */}
         <div className="flex-1 flex items-center justify-center text-center px-4">
@@ -79,21 +71,8 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
           </h1>
         </div>
 
-        {/* Author */}
-        <div className="text-center">
-          <p className="text-muted-foreground text-sm">
-            {question.author}
-          </p>
-        </div>
       </div>
 
-      {/* Navigation Hints */}
-      <div className="absolute top-1/2 left-20 transform -translate-y-1/2 opacity-30 hover:opacity-60 transition-opacity">
-        <ChevronLeft className="w-6 h-6 text-foreground" />
-      </div>
-      <div className="absolute top-1/2 right-4 transform -translate-y-1/2 opacity-30 hover:opacity-60 transition-opacity">
-        <ChevronRight className="w-6 h-6 text-foreground" />
-      </div>
     </div>
   );
 }
