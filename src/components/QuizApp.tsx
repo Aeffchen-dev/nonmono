@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { X, Smile } from 'lucide-react';
 import { QuizCard } from './QuizCard';
 
 interface Question {
@@ -98,17 +99,16 @@ export function QuizApp() {
   return (
     <div className="min-h-screen bg-quiz-background overflow-hidden">
       {/* App Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 p-4 flex justify-between items-center">
-        <div className="text-foreground/60 text-sm">
-          {currentIndex + 1} / {questions.length}
-        </div>
-        <div className="text-foreground/60 text-sm">
-          Quiz Game
+      <div className="absolute top-0 left-0 right-0 z-10 bg-black/20 backdrop-blur-sm border-b border-white/10">
+        <div className="flex justify-between items-center px-4 py-3">
+          <X className="w-6 h-6 text-white cursor-pointer hover:text-white/80 transition-colors" />
+          <h1 className="text-white font-medium text-lg">Quiz Game</h1>
+          <Smile className="w-6 h-6 text-white cursor-pointer hover:text-white/80 transition-colors" />
         </div>
       </div>
 
       {/* Main Quiz Container */}
-      <div className="h-screen flex items-center justify-center p-4 pt-16 pb-8">
+      <div className="h-screen flex items-center justify-center p-4 pt-20 pb-8">
         <div className="w-full max-w-2xl h-full max-h-[600px]">
           <QuizCard
             question={questions[currentIndex]}
