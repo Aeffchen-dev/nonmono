@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { QuizCard } from './QuizCard';
+import { CategorySelector } from './CategorySelector';
 import { supabase } from '@/integrations/supabase/client';
 
 interface Question {
@@ -11,7 +12,11 @@ export function QuizApp() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState('');
   const [questions, setQuestions] = useState<Question[]>([]);
+  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState(true);
+  const [categorySelectorOpen, setCategorySelectorOpen] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
 
   useEffect(() => {
     fetchQuestions();
@@ -31,7 +36,13 @@ export function QuizApp() {
       if (data) {
         // Shuffle questions randomly
         const shuffledQuestions = [...data].sort(() => Math.random() - 0.5);
+        setAllQuestions(shuffledQuestions);
         setQuestions(shuffledQuestions);
+        
+        // Extract unique categories
+        const categories = Array.from(new Set(data.map(q => q.category)));
+        setAvailableCategories(categories);
+        setSelectedCategories(categories); // Start with all categories selected
       }
     } catch (error) {
       console.error('Error:', error);
@@ -75,6 +86,23 @@ export function QuizApp() {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [currentIndex]);
 
+  // Filter questions based on selected categories
+  useEffect(() => {
+    if (selectedCategories.length === 0) {
+      setQuestions([]);
+    } else {
+      const filteredQuestions = allQuestions.filter(q => 
+        selectedCategories.includes(q.category)
+      );
+      setQuestions(filteredQuestions);
+      setCurrentIndex(0); // Reset to first question when filtering
+    }
+  }, [selectedCategories, allQuestions]);
+
+  const handleCategoriesChange = (categories: string[]) => {
+    setSelectedCategories(categories);
+  };
+
   return (
     <div className="h-screen h-[100svh] bg-background overflow-hidden">
       {/* App Header */}
@@ -106,16 +134,30 @@ export function QuizApp() {
           )}
         </div>
         
-        {/* Submit Question Link */}
-        <div className="flex justify-center pt-4">
+        {/* Bottom Links */}
+        <div className="flex justify-between items-center pt-4 w-full">
+          <button 
+            onClick={() => setCategorySelectorOpen(true)}
+            className="text-white font-normal text-xs"
+          >
+            Kategorien wählen
+          </button>
           <a 
             href="mailto:hello@relationshipbydesign.de?subject=Friends%20App%20Frage" 
-            className="text-white font-normal text-xs"
+            className="text-white font-normal text-xs pr-4"
           >
             Frage einreichen
           </a>
         </div>
       </div>
+      
+      <CategorySelector
+        open={categorySelectorOpen}
+        onOpenChange={setCategorySelectorOpen}
+        categories={availableCategories}
+        selectedCategories={selectedCategories}
+        onCategoriesChange={handleCategoriesChange}
+      />
     </div>
   );
 }
