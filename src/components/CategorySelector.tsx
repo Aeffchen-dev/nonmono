@@ -109,10 +109,10 @@ export function CategorySelector({
                       }}
                     >
                       <div
-                        className={`w-4 h-4 border border-white flex items-center justify-center ${isSelected ? 'bg-white' : 'bg-transparent'}`}
+                        className={`w-5 h-5 border border-white flex items-center justify-center ${isSelected ? 'bg-white' : 'bg-transparent'}`}
                         style={{ 
-                          width: '16px', 
-                          height: '16px', 
+                          width: '20px', 
+                          height: '20px', 
                           borderRadius: '24px',
                           outline: '1px solid white',
                           outlineOffset: '0px'
