@@ -120,7 +120,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
 
   return (
     <div 
-      className={`relative h-full w-full bg-gradient-surface rounded-3xl shadow-card overflow-hidden select-none ${animationClass} ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      className={`relative h-full w-full bg-gradient-surface rounded-3xl shadow-card overflow-hidden select-none ${animationClass}`}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
