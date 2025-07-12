@@ -100,8 +100,8 @@ export function QuizApp() {
       {/* App Header */}
       <div className="absolute top-0 left-0 right-0 z-10 bg-black">
         <div className="flex justify-between items-center px-6 py-4">
-          <div className="text-white font-bold text-2xl">fff</div>
-          <div className="text-white font-medium text-lg">Fuck, Friends or Family.</div>
+          <div className="text-white font-black text-4xl">fff</div>
+          <div className="text-white font-normal text-sm">Fuck, Friends or Family.</div>
         </div>
       </div>
 
