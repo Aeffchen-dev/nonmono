@@ -19,43 +19,65 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
   const [mouseStart, setMouseStart] = useState<number | null>(null);
   const [mouseEnd, setMouseEnd] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [needsHyphenation, setNeedsHyphenation] = useState(false);
+  const [processedText, setProcessedText] = useState<JSX.Element[]>([]);
   
   const textRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const minSwipeDistance = 50;
 
-  // Check if text overflows and needs hyphenation
+  // Process text to handle long words individually
   useEffect(() => {
-    const checkTextOverflow = () => {
-      if (!textRef.current || !containerRef.current) return;
+    const processText = () => {
+      if (!containerRef.current) return;
 
-      // Reset styles first
-      textRef.current.style.hyphens = 'none';
-      textRef.current.style.overflowWrap = 'normal';
+      const words = question.question.split(' ');
+      const containerWidth = containerRef.current.getBoundingClientRect().width;
       
-      // Check if there's overflow
-      const hasOverflow = textRef.current.scrollWidth > textRef.current.clientWidth;
-      
-      // Only enable hyphenation if there's actual overflow
-      if (hasOverflow) {
-        textRef.current.style.hyphens = 'auto';
-        textRef.current.style.overflowWrap = 'break-word';
-        setNeedsHyphenation(true);
-      } else {
-        setNeedsHyphenation(false);
-      }
+      // Create temporary element to measure word width
+      const tempElement = document.createElement('span');
+      tempElement.style.cssText = `
+        position: absolute;
+        visibility: hidden;
+        white-space: nowrap;
+        font-size: 3rem;
+        font-family: inherit;
+        font-weight: normal;
+      `;
+      document.body.appendChild(tempElement);
+
+      const processedWords = words.map((word, index) => {
+        tempElement.textContent = word;
+        const wordWidth = tempElement.getBoundingClientRect().width;
+        
+        // Only apply hyphenation to words that are too long
+        const needsHyphenation = wordWidth > containerWidth * 0.8; // 80% threshold
+        
+        return (
+          <span 
+            key={index}
+            style={{
+              hyphens: needsHyphenation ? 'auto' : 'none',
+              overflowWrap: needsHyphenation ? 'break-word' : 'normal'
+            }}
+            lang="de"
+          >
+            {word}
+            {index < words.length - 1 && ' '}
+          </span>
+        );
+      });
+
+      document.body.removeChild(tempElement);
+      setProcessedText(processedWords);
     };
 
-    // Small delay to ensure DOM is ready
-    const timeoutId = setTimeout(checkTextOverflow, 10);
-    
-    window.addEventListener('resize', checkTextOverflow);
+    const timeoutId = setTimeout(processText, 10);
+    window.addEventListener('resize', processText);
     
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener('resize', checkTextOverflow);
+      window.removeEventListener('resize', processText);
     };
   }, [question.question]);
 
@@ -196,14 +218,8 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
           <h1 
             ref={textRef}
             className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight w-full max-w-full" 
-            style={{ 
-              hyphens: needsHyphenation ? 'auto' : 'none',
-              overflowWrap: needsHyphenation ? 'break-word' : 'normal',
-              wordBreak: 'normal'
-            }} 
-            lang="de"
           >
-            {question.question}
+            {processedText.length > 0 ? processedText : question.question}
           </h1>
         </div>
 
