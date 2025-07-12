@@ -113,7 +113,7 @@ export function CategorySelector({
                         style={{ 
                           width: '16px', 
                           height: '16px', 
-                          borderRadius: '2px',
+                          borderRadius: '24px',
                           outline: '1px solid white',
                           outlineOffset: '0px'
                         }}
