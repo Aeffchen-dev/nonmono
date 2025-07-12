@@ -109,7 +109,12 @@ export function QuizApp() {
       <div className="bg-black">
         <div className="flex justify-between items-center px-6 py-3">
           <img src="/lovable-uploads/2d8e7964-b0a5-44c5-ab3e-b3d584352dc5.png" alt="Logo" className="h-8 w-auto" />
-          <div className="text-white font-normal text-xs">Friends App</div>
+          <button 
+            onClick={() => setCategorySelectorOpen(true)}
+            className="text-white font-normal text-xs"
+          >
+            Kategorien wählen
+          </button>
         </div>
       </div>
 
@@ -134,17 +139,11 @@ export function QuizApp() {
           )}
         </div>
         
-        {/* Bottom Links */}
-        <div className="flex justify-between items-center pt-4 w-full">
-          <button 
-            onClick={() => setCategorySelectorOpen(true)}
-            className="text-white font-normal text-xs"
-          >
-            Kategorien wählen
-          </button>
+        {/* Bottom Link */}
+        <div className="flex justify-center items-center pt-4 w-full">
           <a 
             href="mailto:hello@relationshipbydesign.de?subject=Friends%20App%20Frage" 
-            className="text-white font-normal text-xs pr-4"
+            className="text-white font-normal text-xs"
           >
             Frage einreichen
           </a>
