@@ -87,6 +87,18 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
+      {/* Left Click Area - Previous */}
+      <div 
+        className="absolute left-0 top-0 w-20 h-full z-10 cursor-pointer"
+        onClick={onSwipeRight}
+      />
+
+      {/* Right Click Area - Next */}
+      <div 
+        className="absolute right-0 top-0 w-20 h-full z-10 cursor-pointer"
+        onClick={onSwipeLeft}
+      />
+
       {/* Category Strip */}
       <div className={`absolute left-0 top-0 h-full w-12 ${categoryColors.bg} flex items-center justify-center`}>
         <div className="transform -rotate-90 whitespace-nowrap">
