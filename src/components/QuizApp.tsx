@@ -135,23 +135,6 @@ export function QuizApp() {
         </div>
       </div>
 
-      {/* Instructions Overlay (shows on first load) */}
-      {currentIndex === 0 && (
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20 animate-pulse">
-          <div className="bg-quiz-surface p-6 rounded-2xl text-center max-w-sm mx-4 shadow-card">
-            <h3 className="text-xl font-semibold mb-4 text-foreground">Wie zu spielen</h3>
-            <p className="text-foreground/80 mb-4">
-              Swipe nach links/rechts oder verwende die Pfeiltasten um zwischen den Fragen zu wechseln
-            </p>
-            <button 
-              onClick={() => setCurrentIndex(0)}
-              className="px-6 py-2 bg-gradient-primary rounded-full text-foreground font-medium hover:shadow-glow transition-all duration-300"
-            >
-              Los geht's!
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
