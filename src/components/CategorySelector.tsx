@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Checkbox } from '@/components/ui/checkbox';
 
@@ -119,7 +119,7 @@ export function CategorySelector({
                         }}
                       >
                         {isSelected && (
-                          <X 
+                          <Check 
                             className="text-white" 
                             style={{ width: '14px', height: '14px' }}
                             strokeWidth={2}
