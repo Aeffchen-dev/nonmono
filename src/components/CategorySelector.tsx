@@ -83,7 +83,7 @@ export function CategorySelector({
           </DialogHeader>
 
           {/* Categories List */}
-          <div className="flex-1 px-6 pt-6 space-y-3 overflow-y-auto">
+          <div className="flex-1 px-6 pt-8 space-y-3 overflow-y-auto">
             {categories.map((category) => {
               const isSelected = tempSelection.includes(category);
               const colorClasses = getCategoryColors(category);
