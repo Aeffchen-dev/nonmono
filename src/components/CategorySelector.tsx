@@ -76,8 +76,8 @@ export function CategorySelector({
           </button>
 
           {/* Header */}
-          <DialogHeader className="p-6 pb-0">
-            <DialogTitle className="text-white text-xl font-normal">
+          <DialogHeader className="flex flex-row items-center justify-start p-6 pb-0">
+            <DialogTitle className="text-white text-xl font-normal text-left">
               Kategorien wählen
             </DialogTitle>
           </DialogHeader>
