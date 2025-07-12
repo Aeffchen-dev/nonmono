@@ -105,6 +105,16 @@ export function QuizApp() {
             </div>
           )}
         </div>
+        
+        {/* Submit Question Link */}
+        <div className="flex justify-center pt-4">
+          <a 
+            href="mailto:hello@relationshipbydesign.de" 
+            className="text-white font-normal text-xs hover:underline"
+          >
+            Frage einreichen
+          </a>
+        </div>
       </div>
     </div>
   );
