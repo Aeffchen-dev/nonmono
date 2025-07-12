@@ -153,7 +153,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       </div>
 
       {/* Main Content */}
-      <div className="ml-8 h-full flex flex-col justify-center pl-4 pr-4">
+      <div className="ml-8 h-full flex flex-col justify-center pl-4 pr-4 lg:pl-8 lg:pr-8">
 
         {/* Question */}
         <div className="flex-1 flex items-start justify-start text-left pt-16 w-full">
