@@ -53,7 +53,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       onTouchEnd={onTouchEnd}
     >
       {/* Category Strip */}
-      <div className="absolute left-0 top-0 h-full w-16 bg-quiz-category-bg flex items-center justify-center">
+      <div className="absolute left-0 top-0 h-full w-12 bg-quiz-category-bg flex items-center justify-center">
         <div className="transform -rotate-90 whitespace-nowrap">
           <span className="text-quiz-category-text font-bold text-sm tracking-widest uppercase">
             {Array(8).fill(question.category).join(' ').substring(0, 100)}
@@ -62,7 +62,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       </div>
 
       {/* Main Content */}
-      <div className="ml-16 h-full flex flex-col justify-between p-8">
+      <div className="ml-12 h-full flex flex-col justify-center p-8">
 
         {/* Question */}
         <div className="flex-1 flex items-center justify-center text-center px-4">
