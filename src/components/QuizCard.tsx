@@ -31,32 +31,32 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
     const checkTextOverflow = () => {
       if (!textRef.current || !containerRef.current) return;
 
-      // Create a temporary element to measure text without hyphenation
-      const tempElement = document.createElement('span');
-      tempElement.style.cssText = `
-        position: absolute;
-        visibility: hidden;
-        white-space: nowrap;
-        font-size: ${window.getComputedStyle(textRef.current).fontSize};
-        font-family: ${window.getComputedStyle(textRef.current).fontFamily};
-        font-weight: ${window.getComputedStyle(textRef.current).fontWeight};
-      `;
-      tempElement.textContent = question.question;
-      document.body.appendChild(tempElement);
-
-      const textWidth = tempElement.getBoundingClientRect().width;
-      const containerWidth = containerRef.current.getBoundingClientRect().width;
+      // Reset styles first
+      textRef.current.style.hyphens = 'none';
+      textRef.current.style.overflowWrap = 'normal';
       
-      document.body.removeChild(tempElement);
-
-      // Only enable hyphenation if text would overflow
-      setNeedsHyphenation(textWidth > containerWidth);
+      // Check if there's overflow
+      const hasOverflow = textRef.current.scrollWidth > textRef.current.clientWidth;
+      
+      // Only enable hyphenation if there's actual overflow
+      if (hasOverflow) {
+        textRef.current.style.hyphens = 'auto';
+        textRef.current.style.overflowWrap = 'break-word';
+        setNeedsHyphenation(true);
+      } else {
+        setNeedsHyphenation(false);
+      }
     };
 
-    checkTextOverflow();
+    // Small delay to ensure DOM is ready
+    const timeoutId = setTimeout(checkTextOverflow, 10);
+    
     window.addEventListener('resize', checkTextOverflow);
     
-    return () => window.removeEventListener('resize', checkTextOverflow);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', checkTextOverflow);
+    };
   }, [question.question]);
 
   // Get category-specific colors
