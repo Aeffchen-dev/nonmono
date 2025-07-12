@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Question {
@@ -19,8 +19,45 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
   const [mouseStart, setMouseStart] = useState<number | null>(null);
   const [mouseEnd, setMouseEnd] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [needsHyphenation, setNeedsHyphenation] = useState(false);
+  
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const minSwipeDistance = 50;
+
+  // Check if text overflows and needs hyphenation
+  useEffect(() => {
+    const checkTextOverflow = () => {
+      if (!textRef.current || !containerRef.current) return;
+
+      // Create a temporary element to measure text without hyphenation
+      const tempElement = document.createElement('span');
+      tempElement.style.cssText = `
+        position: absolute;
+        visibility: hidden;
+        white-space: nowrap;
+        font-size: ${window.getComputedStyle(textRef.current).fontSize};
+        font-family: ${window.getComputedStyle(textRef.current).fontFamily};
+        font-weight: ${window.getComputedStyle(textRef.current).fontWeight};
+      `;
+      tempElement.textContent = question.question;
+      document.body.appendChild(tempElement);
+
+      const textWidth = tempElement.getBoundingClientRect().width;
+      const containerWidth = containerRef.current.getBoundingClientRect().width;
+      
+      document.body.removeChild(tempElement);
+
+      // Only enable hyphenation if text would overflow
+      setNeedsHyphenation(textWidth > containerWidth);
+    };
+
+    checkTextOverflow();
+    window.addEventListener('resize', checkTextOverflow);
+    
+    return () => window.removeEventListener('resize', checkTextOverflow);
+  }, [question.question]);
 
   // Get category-specific colors
   const getCategoryColors = (category: string) => {
@@ -155,9 +192,17 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       {/* Main Content */}
       <div className="ml-8 h-full flex flex-col justify-center px-8 lg:px-4">
 
-        {/* Question */}
-        <div className="flex-1 flex items-start justify-start text-left pt-16 w-full">
-          <h1 className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight w-full max-w-full" style={{ hyphens: 'auto', wordBreak: 'break-word' }} lang="de">
+        <div ref={containerRef} className="flex-1 flex items-start justify-start text-left pt-16 w-full">
+          <h1 
+            ref={textRef}
+            className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight w-full max-w-full" 
+            style={{ 
+              hyphens: needsHyphenation ? 'auto' : 'none',
+              overflowWrap: needsHyphenation ? 'break-word' : 'normal',
+              wordBreak: 'normal'
+            }} 
+            lang="de"
+          >
             {question.question}
           </h1>
         </div>
