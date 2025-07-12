@@ -56,7 +56,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
       <div className="absolute left-0 top-0 h-full w-12 bg-quiz-category-bg flex items-center justify-center">
         <div className="transform -rotate-90 whitespace-nowrap">
           <span className="text-quiz-category-text font-bold text-sm tracking-wide uppercase">
-            {Array(8).fill(question.category).join(' ').substring(0, 100)}
+            {Array(20).fill(question.category).join('   ')}
           </span>
         </div>
       </div>
