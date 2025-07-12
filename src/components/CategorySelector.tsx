@@ -62,7 +62,7 @@ export function CategorySelector({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-full max-w-[500px] h-full max-h-[600px] bg-background border-0 rounded-2xl p-0 overflow-hidden shadow-card">
+      <DialogContent className="w-full max-w-[500px] h-full max-h-[600px] bg-background border-0 rounded-2xl p-0 overflow-hidden shadow-card [&>button]:hidden">
         <DialogDescription className="sr-only">
           Wählen Sie die Kategorien aus, die Sie sehen möchten
         </DialogDescription>
@@ -92,17 +92,25 @@ export function CategorySelector({
               return (
                 <div 
                   key={category}
-                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] rounded-r-md cursor-pointer transition-all duration-200 hover:bg-[#202020]`}
+                  className={`flex items-center justify-between p-4 border-l-4 ${colorClasses} bg-[#161616] rounded-r cursor-pointer transition-all duration-200 hover:bg-[#202020]`}
+                  style={{ borderRadius: '0 4px 4px 0' }}
                   onClick={() => handleCategoryToggle(category)}
                 >
                   <span className="text-white font-bold text-sm uppercase tracking-wide">
                     {category}
                   </span>
-                  <Checkbox
-                    checked={isSelected}
-                    onCheckedChange={() => handleCategoryToggle(category)}
-                    className="h-6 w-6 border-2 border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
-                  />
+                  <div onClick={(e) => e.stopPropagation()}>
+                    <Checkbox
+                      checked={isSelected}
+                      onCheckedChange={(checked) => {
+                        const newCategories = checked 
+                          ? [...tempSelection, category]
+                          : tempSelection.filter(c => c !== category);
+                        setTempSelection(newCategories);
+                      }}
+                      className="h-6 w-6 border-2 border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
+                    />
+                  </div>
                 </div>
               );
             })}
