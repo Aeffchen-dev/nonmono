@@ -121,7 +121,7 @@ export function CategorySelector({
                         {isSelected && (
                           <X 
                             className="text-black" 
-                            style={{ width: '8px', height: '8px' }}
+                            style={{ width: '12px', height: '12px' }}
                           />
                         )}
                       </div>
