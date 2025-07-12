@@ -119,21 +119,6 @@ export function QuizApp() {
         </div>
       </div>
 
-      {/* Progress Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-        <div className="flex space-x-2">
-          {questions.map((_, index) => (
-            <div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? 'bg-quiz-primary shadow-glow' 
-                  : 'bg-foreground/20'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
 
     </div>
   );
