@@ -157,7 +157,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
 
         {/* Question */}
         <div className="flex-1 flex items-start justify-start text-left pt-16">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground leading-tight break-words hyphens-auto">
             {question.question}
           </h1>
         </div>
