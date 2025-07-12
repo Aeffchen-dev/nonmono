@@ -76,16 +76,16 @@ export function QuizApp() {
   return (
     <div className="min-h-screen bg-quiz-background overflow-hidden">
       {/* App Header */}
-      <div className="absolute top-0 left-0 right-0 z-10 bg-black">
-        <div className="flex justify-between items-center px-6 py-4">
-          <div className="text-white font-black text-4xl">fff</div>
-          <div className="text-white font-normal text-sm">Fuck, Friends or Family.</div>
+      <div className="bg-black">
+        <div className="flex justify-between items-center px-6 py-3">
+          <div className="text-white font-black text-3xl">fff</div>
+          <div className="text-white font-normal text-xs">Fuck, Friends or Family.</div>
         </div>
       </div>
 
       {/* Main Quiz Container */}
-      <div className="h-screen flex items-center justify-center p-4 pt-20 pb-8">
-        <div className="w-full max-w-2xl h-full max-h-[600px]">
+      <div className="h-[calc(100vh-60px)] h-[calc(100dvh-60px)] flex items-center justify-center p-4">
+        <div className="w-full max-w-2xl h-full max-h-[calc(100vh-120px)] max-h-[calc(100dvh-120px)]">
           {loading ? (
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Lade Fragen...</div>
