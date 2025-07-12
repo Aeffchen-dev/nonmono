@@ -99,16 +99,33 @@ export function CategorySelector({
                     {category}
                   </span>
                   <div onClick={(e) => e.stopPropagation()}>
-                    <Checkbox
-                      checked={isSelected}
-                      onCheckedChange={(checked) => {
-                        const newCategories = checked 
-                          ? [...tempSelection, category]
-                          : tempSelection.filter(c => c !== category);
+                    <div
+                      className="relative cursor-pointer"
+                      onClick={() => {
+                        const newCategories = isSelected 
+                          ? tempSelection.filter(c => c !== category)
+                          : [...tempSelection, category];
                         setTempSelection(newCategories);
                       }}
-                      className="h-6 w-6 border-2 border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
-                    />
+                    >
+                      <div
+                        className={`w-4 h-4 border border-white flex items-center justify-center ${isSelected ? 'bg-white' : 'bg-transparent'}`}
+                        style={{ 
+                          width: '16px', 
+                          height: '16px', 
+                          borderRadius: '2px',
+                          outline: '1px solid white',
+                          outlineOffset: '0px'
+                        }}
+                      >
+                        {isSelected && (
+                          <X 
+                            className="text-black" 
+                            style={{ width: '8px', height: '8px' }}
+                          />
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
