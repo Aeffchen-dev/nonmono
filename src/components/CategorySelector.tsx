@@ -109,7 +109,7 @@ export function CategorySelector({
                       }}
                     >
                       <div
-                        className={`w-4 h-4 border border-white flex items-center justify-center ${isSelected ? 'bg-white' : 'bg-transparent'}`}
+                        className={`w-4 h-4 border border-white flex items-center justify-center bg-transparent`}
                         style={{ 
                           width: '16px', 
                           height: '16px', 
@@ -120,7 +120,7 @@ export function CategorySelector({
                       >
                         {isSelected && (
                           <X 
-                            className="text-black" 
+                            className="text-white" 
                             style={{ width: '14px', height: '14px' }}
                           />
                         )}
