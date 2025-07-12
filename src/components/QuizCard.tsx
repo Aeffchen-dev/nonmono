@@ -120,7 +120,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
 
   return (
     <div 
-      className={`relative h-full w-full bg-[hsl(var(--card-background))] rounded-3xl shadow-card overflow-hidden select-none mx-4 md:mx-0 ${animationClass}`}
+      className={`relative h-full w-full bg-[hsl(var(--card-background))] rounded-2xl shadow-card overflow-hidden select-none mx-4 md:mx-0 ${animationClass}`}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
