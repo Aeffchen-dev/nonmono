@@ -1,64 +1,42 @@
 import { useState, useEffect } from 'react';
 import { QuizCard } from './QuizCard';
+import { supabase } from '@/integrations/supabase/client';
 
 interface Question {
-  id: number;
   question: string;
   category: string;
-  type: string;
-  author: string;
 }
-
-// Mock data für die erste Version
-const mockQuestions: Question[] = [
-  {
-    id: 1,
-    question: "Was ist deine Lieblings-Porno-Kategorie?",
-    category: "FUCK",
-    type: "FRAGETYP",
-    author: "Autor"
-  },
-  {
-    id: 2,
-    question: "Welche Fantasie würdest du gerne mal ausleben?",
-    category: "DIRTY",
-    type: "FANTASY",
-    author: "Anonymous"
-  },
-  {
-    id: 3,
-    question: "Was war dein peinlichster Moment beim Sex?",
-    category: "FAIL",
-    type: "STORY",
-    author: "Nutzer123"
-  },
-  {
-    id: 4,
-    question: "An welchem ungewöhnlichen Ort hattest du schon mal Sex?",
-    category: "WILD",
-    type: "ERFAHRUNG",
-    author: "Abenteurer"
-  },
-  {
-    id: 5,
-    question: "Was ist das Verrückteste, was du im Bett gemacht hast?",
-    category: "CRAZY",
-    type: "GESTÄNDNIS",
-    author: "Wilde_Seele"
-  },
-  {
-    id: 6,
-    question: "Welches Spielzeug sollte jeder mal ausprobiert haben?",
-    category: "TOYS",
-    type: "EMPFEHLUNG",
-    author: "Expert_69"
-  }
-];
 
 export function QuizApp() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState('');
-  const [questions] = useState<Question[]>(mockQuestions);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  const fetchQuestions = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('Friends App Questions')
+        .select('*');
+      
+      if (error) {
+        console.error('Error fetching questions:', error);
+        return;
+      }
+      
+      if (data) {
+        setQuestions(data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const nextQuestion = () => {
     if (currentIndex < questions.length - 1) {
@@ -108,12 +86,22 @@ export function QuizApp() {
       {/* Main Quiz Container */}
       <div className="h-screen flex items-center justify-center p-4 pt-20 pb-8">
         <div className="w-full max-w-2xl h-full max-h-[600px]">
-          <QuizCard
-            question={questions[currentIndex]}
-            onSwipeLeft={nextQuestion}
-            onSwipeRight={prevQuestion}
-            animationClass={animationClass}
-          />
+          {loading ? (
+            <div className="h-full flex items-center justify-center">
+              <div className="text-white text-xl">Lade Fragen...</div>
+            </div>
+          ) : questions.length > 0 ? (
+            <QuizCard
+              question={questions[currentIndex]}
+              onSwipeLeft={nextQuestion}
+              onSwipeRight={prevQuestion}
+              animationClass={animationClass}
+            />
+          ) : (
+            <div className="h-full flex items-center justify-center">
+              <div className="text-white text-xl">Keine Fragen verfügbar</div>
+            </div>
+          )}
         </div>
       </div>
 

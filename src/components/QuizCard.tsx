@@ -2,11 +2,8 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Question {
-  id: number;
   question: string;
   category: string;
-  type: string;
-  author: string;
 }
 
 interface QuizCardProps {

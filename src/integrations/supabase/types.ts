@@ -14,7 +14,21 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      "Friends App Questions": {
+        Row: {
+          category: string
+          question: string
+        }
+        Insert: {
+          category: string
+          question: string
+        }
+        Update: {
+          category?: string
+          question?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
