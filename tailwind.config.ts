@@ -72,7 +72,11 @@ export default {
 					'fuck-bg': 'hsl(var(--quiz-fuck-bg))',
 					'fuck-text': 'hsl(var(--quiz-fuck-text))',
 					'friends-bg': 'hsl(var(--quiz-friends-bg))',
-					'friends-text': 'hsl(var(--quiz-friends-text))'
+					'friends-text': 'hsl(var(--quiz-friends-text))',
+					'self-reflection-bg': 'hsl(var(--quiz-self-reflection-bg))',
+					'self-reflection-text': 'hsl(var(--quiz-self-reflection-text))',
+					'party-bg': 'hsl(var(--quiz-party-bg))',
+					'party-text': 'hsl(var(--quiz-party-text))'
 				}
 			},
 			backgroundImage: {
