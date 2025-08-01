@@ -108,7 +108,7 @@ export function QuizApp() {
       {/* App Header */}
       <div className="bg-black">
         <div className="flex justify-between items-center px-6 py-3">
-          <img src="/lovable-uploads/2d8e7964-b0a5-44c5-ab3e-b3d584352dc5.png" alt="Logo" className="h-8 w-auto" />
+          <img src="/assets/logo.png" alt="Logo" className="h-8 w-auto" />
           <button 
             onClick={() => setCategorySelectorOpen(true)}
             className="text-white font-normal text-xs"
