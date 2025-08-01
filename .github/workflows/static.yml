@@ -1,5 +1,7 @@
 name: Deploy to GitHub Pages
 
+# Updated build for latest changes
+
 on:
   push:
     branches: ["main"]
