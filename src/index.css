@@ -61,6 +61,32 @@ All colors MUST be HSL.
     --quiz-connection-bg: 240 100% 50%;   /* Blue #0000FF */
     --quiz-connection-text: 0 0% 100%;    /* White text on blue */
     
+    /* Identity category */
+    --quiz-identity-bg: 268 83% 66%;      /* Purple #A855F7 */
+    --quiz-identity-text: 261 43% 96%;    /* Light purple text */
+    
+    /* Additional categories for future use */
+    --quiz-career-bg: 24 95% 53%;         /* Orange #EA580C */
+    --quiz-career-text: 47 97% 89%;       /* Light orange text */
+    --quiz-travel-bg: 142 71% 45%;        /* Green #22C55E */
+    --quiz-travel-text: 138 76% 97%;      /* Light green text */
+    --quiz-health-bg: 322 81% 51%;        /* Pink #DC2626 */
+    --quiz-health-text: 327 73% 97%;      /* Light pink text */
+    --quiz-money-bg: 45 93% 47%;          /* Gold #CA8A04 */
+    --quiz-money-text: 48 96% 89%;        /* Light gold text */
+    --quiz-love-bg: 0 84% 60%;            /* Red #EF4444 */
+    --quiz-love-text: 0 86% 97%;          /* Light red text */
+    --quiz-hobby-bg: 25 95% 39%;          /* Brown #8B4513 */
+    --quiz-hobby-text: 47 97% 89%;        /* Light brown text */
+    --quiz-dreams-bg: 263 86% 56%;        /* Purple #9333EA */
+    --quiz-dreams-text: 262 83% 98%;      /* Light purple text */
+    --quiz-fear-bg: 215 16% 47%;          /* Gray #4B5563 */
+    --quiz-fear-text: 220 9% 97%;         /* Light gray text */
+    --quiz-wisdom-bg: 239 84% 67%;        /* Indigo #4F46E5 */
+    --quiz-wisdom-text: 233 84% 95%;      /* Light indigo text */
+    --quiz-future-bg: 199 89% 48%;        /* Sky blue #0EA5E9 */
+    --quiz-future-text: 204 94% 94%;      /* Light sky blue text */
+    
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(290 100% 80%));
     --gradient-surface: linear-gradient(135deg, hsl(0 0% 10%), hsl(0 0% 15%));

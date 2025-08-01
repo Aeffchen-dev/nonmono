@@ -28,19 +28,41 @@ export function CategorySelector({
   const getCategoryColors = (category: string) => {
     switch (category.toLowerCase()) {
       case 'fuck':
-        return 'border-l-red-500';
+        return 'border-l-quiz-fuck-bg';
       case 'friends':
-        return 'border-l-purple-500';
+        return 'border-l-quiz-friends-bg';
       case 'family':
-        return 'border-l-green-500';
+        return 'border-l-quiz-family-bg';
       case 'self reflection':
-        return 'border-l-blue-500';
+        return 'border-l-quiz-self-reflection-bg';
       case 'party':
-        return 'border-l-yellow-500';
+        return 'border-l-quiz-party-bg';
       case 'connection':
-        return 'border-l-blue-600';
+        return 'border-l-quiz-connection-bg';
+      case 'identity':
+        return 'border-l-quiz-identity-bg';
+      case 'career':
+        return 'border-l-quiz-career-bg';
+      case 'travel':
+        return 'border-l-quiz-travel-bg';
+      case 'health':
+        return 'border-l-quiz-health-bg';
+      case 'money':
+        return 'border-l-quiz-money-bg';
+      case 'love':
+        return 'border-l-quiz-love-bg';
+      case 'hobby':
+        return 'border-l-quiz-hobby-bg';
+      case 'dreams':
+        return 'border-l-quiz-dreams-bg';
+      case 'fear':
+        return 'border-l-quiz-fear-bg';
+      case 'wisdom':
+        return 'border-l-quiz-wisdom-bg';
+      case 'future':
+        return 'border-l-quiz-future-bg';
       default:
-        return 'border-l-gray-500';
+        return 'border-l-quiz-category-bg';
     }
   };
 

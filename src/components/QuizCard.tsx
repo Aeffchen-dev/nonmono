@@ -121,6 +121,61 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
           bg: 'bg-quiz-connection-bg',
           text: 'text-quiz-connection-text'
         };
+      case 'identity':
+        return {
+          bg: 'bg-quiz-identity-bg',
+          text: 'text-quiz-identity-text'
+        };
+      case 'career':
+        return {
+          bg: 'bg-quiz-career-bg',
+          text: 'text-quiz-career-text'
+        };
+      case 'travel':
+        return {
+          bg: 'bg-quiz-travel-bg',
+          text: 'text-quiz-travel-text'
+        };
+      case 'health':
+        return {
+          bg: 'bg-quiz-health-bg',
+          text: 'text-quiz-health-text'
+        };
+      case 'money':
+        return {
+          bg: 'bg-quiz-money-bg',
+          text: 'text-quiz-money-text'
+        };
+      case 'love':
+        return {
+          bg: 'bg-quiz-love-bg',
+          text: 'text-quiz-love-text'
+        };
+      case 'hobby':
+        return {
+          bg: 'bg-quiz-hobby-bg',
+          text: 'text-quiz-hobby-text'
+        };
+      case 'dreams':
+        return {
+          bg: 'bg-quiz-dreams-bg',
+          text: 'text-quiz-dreams-text'
+        };
+      case 'fear':
+        return {
+          bg: 'bg-quiz-fear-bg',
+          text: 'text-quiz-fear-text'
+        };
+      case 'wisdom':
+        return {
+          bg: 'bg-quiz-wisdom-bg',
+          text: 'text-quiz-wisdom-text'
+        };
+      case 'future':
+        return {
+          bg: 'bg-quiz-future-bg',
+          text: 'text-quiz-future-text'
+        };
       default:
         return {
           bg: 'bg-quiz-category-bg',
