@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 
-# Updated build for latest changes
+# Updated build for latest meta tag changes
 
 on:
   push:
