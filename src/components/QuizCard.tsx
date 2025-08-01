@@ -116,6 +116,11 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
           bg: 'bg-quiz-family-bg',
           text: 'text-quiz-family-text'
         };
+      case 'connection':
+        return {
+          bg: 'bg-quiz-connection-bg',
+          text: 'text-quiz-connection-text'
+        };
       default:
         return {
           bg: 'bg-quiz-category-bg',

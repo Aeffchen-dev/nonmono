@@ -37,6 +37,8 @@ export function CategorySelector({
         return 'border-l-blue-500';
       case 'party':
         return 'border-l-yellow-500';
+      case 'connection':
+        return 'border-l-blue-600';
       default:
         return 'border-l-gray-500';
     }

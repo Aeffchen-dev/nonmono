@@ -58,6 +58,8 @@ All colors MUST be HSL.
     --quiz-party-text: 0 0% 0%;           /* Black text on yellow */
     --quiz-family-bg: 97 48% 84%;         /* Light green #CCFFAC */
     --quiz-family-text: 0 0% 0%;          /* Black text on light green */
+    --quiz-connection-bg: 240 100% 50%;   /* Blue #0000FF */
+    --quiz-connection-text: 0 0% 100%;    /* White text on blue */
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(290 100% 80%));

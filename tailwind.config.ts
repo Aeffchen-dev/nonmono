@@ -78,7 +78,9 @@ export default {
 					'party-bg': 'hsl(var(--quiz-party-bg))',
 					'party-text': 'hsl(var(--quiz-party-text))',
 					'family-bg': 'hsl(var(--quiz-family-bg))',
-					'family-text': 'hsl(var(--quiz-family-text))'
+					'family-text': 'hsl(var(--quiz-family-text))',
+					'connection-bg': 'hsl(var(--quiz-connection-bg))',
+					'connection-text': 'hsl(var(--quiz-connection-text))'
 				}
 			},
 			backgroundImage: {
