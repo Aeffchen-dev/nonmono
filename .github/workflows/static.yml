@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 
-# Updated build for latest meta tag changes
+# Fixed MIME type issue with .nojekyll and Vite config
 
 on:
   push:
