@@ -57,7 +57,13 @@ All colors MUST be HSL.
     --quiz-party-bg: 60 100% 71%;         /* Yellow #FFFE6F */
     --quiz-party-text: 0 0% 0%;           /* Black text on yellow */
     
-    /* Additional categories for future use */
+    /* Additional categories with proper colors */
+    --quiz-friends-bg: 120 100% 50%;      /* Green #00FF00 */
+    --quiz-friends-text: 0 0% 0%;         /* Black text on green */
+    --quiz-self-reflection-bg: 195 100% 50%; /* Light blue #00BFFF */
+    --quiz-self-reflection-text: 0 0% 0%; /* Black text on light blue */
+    --quiz-family-bg: 30 100% 70%;        /* Orange #FFCC66 */
+    --quiz-family-text: 0 0% 0%;          /* Black text on orange */
     --quiz-career-bg: 35 100% 62%;        /* Orange #FFB23E */
     --quiz-career-text: 0 0% 0%;          /* Black text on orange */
     --quiz-travel-bg: 92 100% 83%;        /* Light green #CCFFAC */
