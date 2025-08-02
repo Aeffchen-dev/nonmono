@@ -284,7 +284,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
         <div ref={containerRef} className="flex-1 flex items-start justify-start text-left pt-16 w-full">
           <h1 
             ref={textRef}
-            className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight md:leading-[1.6] w-full max-w-full" 
+            className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight md:leading-[2] w-full max-w-full" 
           >
             {processedText.length > 0 ? processedText : question.question}
           </h1>
