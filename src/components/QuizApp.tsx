@@ -364,7 +364,7 @@ export function QuizApp() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Feedback geben
+            non mono Feedback
           </a>
         </div>
       </div>
