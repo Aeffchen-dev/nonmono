@@ -91,7 +91,7 @@ export function CategorySelector({
         <DialogDescription className="sr-only">
           Wählen Sie die Kategorien aus, die Sie sehen möchten
         </DialogDescription>
-        <div className="flex flex-col h-full relative w-full max-h-full">
+        <div className="flex flex-col h-full relative w-full max-h-full min-h-0">
           {/* Close Button */}
           <button
             onClick={handleClose}
@@ -108,7 +108,7 @@ export function CategorySelector({
           </DialogHeader>
 
           {/* Categories List */}
-          <ScrollArea className="flex-1 pt-20 max-h-0">
+          <ScrollArea className="flex-1 pt-20 min-h-0">
             <div className="px-6 space-y-3 pb-6">
               {categories.map((category) => {
               const isSelected = tempSelection.includes(category);
