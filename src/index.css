@@ -145,7 +145,7 @@ All colors MUST be HSL.
 /* Kokoro Font Definition */
 @font-face {
   font-family: 'Kokoro';
-  src: url('/fonts/kokoro-bolditalic-webfont.woff2') format('woff2');
+  src: url('/public/fonts/kokoro-bolditalic-webfont.woff2') format('woff2');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
