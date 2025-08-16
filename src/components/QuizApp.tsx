@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { QuizCard } from './QuizCard';
 import { CategorySelector } from './CategorySelector';
-import { supabase } from '@/integrations/supabase/client';
 
 interface Question {
   question: string;
@@ -24,28 +23,51 @@ export function QuizApp() {
 
   const fetchQuestions = async () => {
     try {
-      const { data, error } = await supabase
-        .from('Friends App Questions')
-        .select('*');
+      // Convert Google Sheets URL to CSV export URL
+      const spreadsheetId = '1ocX6XRk_Y_HcUCg7hcjb1nHuoKqyBUc2KmWX9JNTXrU';
+      const csvUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=0`;
       
-      if (error) {
-        console.error('Error fetching questions:', error);
-        return;
+      const response = await fetch(csvUrl);
+      if (!response.ok) {
+        throw new Error('Failed to fetch spreadsheet data');
       }
       
-      if (data) {
+      const csvText = await response.text();
+      
+      // Parse CSV data (skip header row if exists)
+      const lines = csvText.split('\n').filter(line => line.trim());
+      const questions: Question[] = [];
+      
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+        
+        // Parse CSV line (handle quoted values)
+        const values = line.split(',').map(value => 
+          value.trim().replace(/^"(.*)"$/, '$1')
+        );
+        
+        if (values.length >= 2 && values[0] && values[1]) {
+          questions.push({
+            category: values[0],
+            question: values[1]
+          });
+        }
+      }
+      
+      if (questions.length > 0) {
         // Shuffle questions randomly
-        const shuffledQuestions = [...data].sort(() => Math.random() - 0.5);
+        const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
         setAllQuestions(shuffledQuestions);
         setQuestions(shuffledQuestions);
         
         // Extract unique categories
-        const categories = Array.from(new Set(data.map(q => q.category)));
+        const categories = Array.from(new Set(questions.map(q => q.category)));
         setAvailableCategories(categories);
         setSelectedCategories(categories); // Start with all categories selected
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching questions:', error);
     } finally {
       setLoading(false);
     }
