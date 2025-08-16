@@ -224,7 +224,7 @@ export function QuizApp() {
   return (
     <div className="min-h-[100svh] h-[100svh] bg-background overflow-hidden flex flex-col" style={{ height: '100svh' }}>
       {/* App Header */}
-      <div className="bg-black" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
+      <div className="bg-black mt-4" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
         <div className="flex justify-between items-center px-6 py-3">
           <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>non mono</h1>
           <button 
@@ -237,8 +237,8 @@ export function QuizApp() {
       </div>
 
       {/* Main Quiz Container */}
-      <div className="flex-1 flex flex-col px-4 overflow-hidden" style={{ minHeight: 0 }}>
-        <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex flex-col px-4 overflow-hidden mt-4 gap-4" style={{ minHeight: 0 }}>
+        <div className="flex-1 flex items-stretch justify-center min-h-0">
           {loading ? (
             <div className="text-white text-xl">Lade Fragen...</div>
           ) : slides.length > 0 ? (
@@ -263,7 +263,7 @@ export function QuizApp() {
         </div>
         
         {/* Bottom Links */}
-        <div className="flex justify-between items-center py-2 w-full px-2 flex-shrink-0" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}>
+        <div className="flex justify-between items-center py-2 w-full px-2 flex-shrink-0 mb-4" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}>
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
