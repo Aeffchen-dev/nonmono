@@ -249,13 +249,21 @@ export function QuizApp() {
           )}
         </div>
         
-        {/* Bottom Link */}
-        <div className="flex justify-center items-center pt-4 w-full">
+        {/* Bottom Links */}
+        <div className="flex justify-between items-center pt-4 w-full px-2">
           <a 
-            href="mailto:hello@relationshipbydesign.de?subject=Friends%20App%20Frage" 
+            href="https://relationshipbydesign.de/" 
+            className="text-white font-normal text-xs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Relationship by design
+          </a>
+          <a 
+            href="mailto:hello@relationshipbydesign.de?subject=Feedback%20Open%20Relationship%20Workshop" 
             className="text-white font-normal text-xs"
           >
-            Frage einreichen
+            Feedback geben
           </a>
         </div>
       </div>
