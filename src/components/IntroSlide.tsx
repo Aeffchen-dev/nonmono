@@ -128,7 +128,7 @@ export function IntroSlide({ type, onSwipeLeft, onSwipeRight, animationClass = '
               className="text-foreground text-left leading-relaxed"
               style={{ fontFamily: 'Arial, sans-serif', fontSize: '12px' }}
             >
-              In einer monogame Beziehung herrschen allgemein bekannte universelle Regeln. Wohingegen es für offenen Beziehungen keinen Standard gibt – ihr gestaltet eure Regeln selbst, so wie es zu euch passt. Dieses Kartenspiel unterstützt euch dabei, ins Gespräch zu kommen: über eure Wünsche, Motivation, Ängste, Bedürfnisse und Grenzen. Zwischendurch erhaltet ihr Impulse, die Nähe schaffen und eure Verbindung stärken. So entdeckt sie in ihr Schritt für Schritt, ob sich eine offene Beziehung für euch richtig anfühlt und wie ihr sie für euch gestalten wollt.
+              In einer monogame Beziehung herrschen allgemein bekannte universelle Regeln. Wohingegen es für offenen Beziehungen keinen Standard gibt – ihr gestaltet eure Regeln selbst, so wie es zu euch passt. Dieses Kartenspiel unterstützt euch dabei, ins Gespräch zu kommen: über eure Wünsche, Motivation, Ängste, Bedürfnisse und Grenzen. Zwischendurch erhaltet ihr Impulse, die Nähe schaffen und eure Verbindung stärken. So entdeckt ihr Schritt für Schritt, ob sich eine offene Beziehung für euch richtig anfühlt und wie ihr sie für euch gestalten wollt.
             </p>
           </div>
         )}
