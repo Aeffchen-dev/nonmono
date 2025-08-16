@@ -78,8 +78,8 @@ export function IntroSlide({ type, onSwipeLeft, onSwipeRight, animationClass = '
     <div 
       className={`relative w-full max-w-[500px] mx-auto bg-[hsl(var(--card-background))] rounded-2xl shadow-card overflow-hidden select-none max-h-full ${animationClass}`}
       style={{
-        height: 'min(140vw, 85svh, 750px)',
-        maxHeight: 'min(100%, 85svh)'
+        height: 'min(150vw, 90dvh, 90svh, 780px)',
+        maxHeight: 'min(100%, 90dvh, 90svh)'
       }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
