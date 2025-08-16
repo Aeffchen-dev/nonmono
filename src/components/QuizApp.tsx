@@ -237,12 +237,10 @@ export function QuizApp() {
       </div>
 
       {/* Main Quiz Container */}
-      <div className="h-[calc(100vh-60px)] h-[calc(100svh-60px)] flex flex-col items-center px-4 pt-4 overflow-hidden">
-        <div className="w-full h-[calc(100vh-200px)] h-[calc(100svh-200px)] md:h-[calc(100vh-130px)] md:h-[calc(100svh-130px)] flex items-center justify-center">
+      <div className="h-[calc(100vh-60px)] h-[calc(100svh-60px)] flex flex-col px-4 overflow-hidden">
+        <div className="flex-1 flex items-center justify-center">
           {loading ? (
-            <div className="h-full flex items-center justify-center">
-              <div className="text-white text-xl">Lade Fragen...</div>
-            </div>
+            <div className="text-white text-xl">Lade Fragen...</div>
           ) : slides.length > 0 ? (
             slides[currentIndex].type === 'intro' ? (
               <IntroSlide
@@ -260,14 +258,12 @@ export function QuizApp() {
               />
             )
           ) : (
-            <div className="h-full flex items-center justify-center">
-              <div className="text-white text-xl">Keine Fragen verfügbar</div>
-            </div>
+            <div className="text-white text-xl">Keine Fragen verfügbar</div>
           )}
         </div>
         
         {/* Bottom Links */}
-        <div className="flex justify-between items-center pt-4 w-full px-2">
+        <div className="flex justify-between items-center py-4 w-full px-2">
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
