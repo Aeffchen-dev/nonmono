@@ -172,9 +172,9 @@ export function QuizApp() {
         ];
         
         // Find and move the specific question to 3rd position
-        const targetQuestion = "Was erhoffst du dir von unserem heutigen Gespräch?";
+        const targetQuestion = "Was wünschst du dir von unserem heutigen Gespräch?";
         const targetQuestionIndex = finalQuestions.findIndex(q => 
-          q.question.includes("Was erhoffst du dir von unserem heutigen Gespräch")
+          q.question.includes("Was wünschst du dir von unserem heutigen Gespräch")
         );
         
         let reorderedQuestions = [...finalQuestions];
@@ -259,7 +259,7 @@ export function QuizApp() {
       
       // Find and move the specific question to 3rd position for filtered questions too
       const targetQuestionIndex = filteredQuestions.findIndex(q => 
-        q.question.includes("Was erhoffst du dir von unserem heutigen Gespräch")
+        q.question.includes("Was wünschst du dir von unserem heutigen Gespräch")
       );
       
       let reorderedQuestions = [...filteredQuestions];
