@@ -88,27 +88,44 @@ export function QuizApp() {
       }
       
       if (questions.length > 0) {
-        // Separate Reflexion questions from others
+        // Separate different categories
         const reflexionQuestions = questions.filter(q => q.category === 'Reflexion');
-        const otherQuestions = questions.filter(q => q.category !== 'Reflexion');
+        const bindungQuestions = questions.filter(q => q.category === 'Bindung');
+        const otherQuestions = questions.filter(q => q.category !== 'Reflexion' && q.category !== 'Bindung');
         
-        // Shuffle both groups
+        // Shuffle all groups
         const shuffledOthers = [...otherQuestions].sort(() => Math.random() - 0.5);
         const shuffledReflexion = [...reflexionQuestions].sort(() => Math.random() - 0.5);
+        const shuffledBindung = [...bindungQuestions].sort(() => Math.random() - 0.5);
         
-        // Calculate position for last third
+        // Calculate positions for distribution
         const totalQuestions = questions.length;
         const lastThirdStart = Math.floor(totalQuestions * 2 / 3);
         
-        // Create ordered array: others first, then reflexion in last third
-        const orderedQuestions = [
-          ...shuffledOthers.slice(0, lastThirdStart),
+        // Create base array with others
+        const baseQuestions = [...shuffledOthers];
+        
+        // Distribute Bindung questions evenly
+        const distributedQuestions = [...baseQuestions];
+        const bindungInterval = Math.max(1, Math.floor(distributedQuestions.length / (shuffledBindung.length + 1)));
+        
+        shuffledBindung.forEach((bindungQ, index) => {
+          const insertPosition = Math.min(
+            distributedQuestions.length,
+            (index + 1) * bindungInterval + index
+          );
+          distributedQuestions.splice(insertPosition, 0, bindungQ);
+        });
+        
+        // Add reflexion questions in the last third
+        const finalQuestions = [
+          ...distributedQuestions.slice(0, lastThirdStart),
           ...shuffledReflexion,
-          ...shuffledOthers.slice(lastThirdStart)
+          ...distributedQuestions.slice(lastThirdStart)
         ];
         
-        setAllQuestions(orderedQuestions);
-        setQuestions(orderedQuestions);
+        setAllQuestions(finalQuestions);
+        setQuestions(finalQuestions);
         
         // Create slides with intro slides at the beginning
         const introSlides: SlideItem[] = [
@@ -116,7 +133,7 @@ export function QuizApp() {
           { type: 'intro', introType: 'description' }
         ];
         
-        const questionSlides: SlideItem[] = orderedQuestions.map(q => ({
+        const questionSlides: SlideItem[] = finalQuestions.map(q => ({
           type: 'question',
           question: q
         }));
