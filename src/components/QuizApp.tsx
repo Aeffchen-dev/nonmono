@@ -224,7 +224,7 @@ export function QuizApp() {
   return (
     <div className="min-h-[100svh] h-[100svh] bg-background overflow-hidden flex flex-col" style={{ height: '100svh' }}>
       {/* App Header */}
-      <div className="bg-black">
+      <div className="bg-black mt-4">
         <div className="flex justify-between items-center px-6 py-3">
           <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>non mono</h1>
           <button 
@@ -237,7 +237,7 @@ export function QuizApp() {
       </div>
 
       {/* Main Quiz Container */}
-      <div className="flex-1 flex flex-col px-4 overflow-hidden" style={{ minHeight: 0 }}>
+      <div className="flex flex-col px-4 mt-4" style={{ height: 'calc(100svh - 128px)' }}>
         <div className="flex-1 flex items-center justify-center">
           {loading ? (
             <div className="text-white text-xl">Lade Fragen...</div>
@@ -263,7 +263,7 @@ export function QuizApp() {
         </div>
         
         {/* Bottom Links */}
-        <div className="flex justify-between items-center py-2 w-full px-2 flex-shrink-0" style={{ paddingBottom: 'max(2rem, calc(env(safe-area-inset-bottom, 1rem) + 1rem))' }}>
+        <div className="flex justify-between items-center py-2 w-full px-2 mt-4 mb-4">
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
