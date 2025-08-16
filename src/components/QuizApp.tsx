@@ -222,7 +222,7 @@ export function QuizApp() {
   };
 
   return (
-    <div className="h-screen h-[100svh] bg-background overflow-hidden">
+    <div className="min-h-[100dvh] h-[100dvh] bg-background overflow-hidden flex flex-col">
       {/* App Header */}
       <div className="bg-black">
         <div className="flex justify-between items-center px-6 py-3">
@@ -237,7 +237,7 @@ export function QuizApp() {
       </div>
 
       {/* Main Quiz Container */}
-      <div className="h-[calc(100vh-60px)] h-[calc(100svh-60px)] flex flex-col px-4 overflow-hidden">
+      <div className="flex-1 flex flex-col px-4 overflow-hidden">
         <div className="flex-1 flex items-center justify-center">
           {loading ? (
             <div className="text-white text-xl">Lade Fragen...</div>
