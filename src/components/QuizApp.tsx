@@ -208,7 +208,7 @@ export function QuizApp() {
     <div className="h-screen h-[100svh] bg-background overflow-hidden">
       {/* App Header */}
       <div className="bg-black">
-        <div className="flex justify-between items-center px-6 py-3">
+        <div className="flex justify-between items-end px-6 py-3">
           <h1 className="text-white font-kokoro text-lg" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>Open Relationship</h1>
           <button 
             onClick={() => setCategorySelectorOpen(true)}
