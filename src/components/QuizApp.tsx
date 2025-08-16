@@ -260,8 +260,10 @@ export function QuizApp() {
             Relationship by design
           </a>
           <a 
-            href="mailto:hello@relationshipbydesign.de?subject=Feedback%20Open%20Relationship%20Workshop" 
+            href="mailto:hello@relationshipbydesign.de?subject=Feedback%20Open%20Relationship%20Wokshop" 
             className="text-white font-normal text-xs"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Feedback geben
           </a>
