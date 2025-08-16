@@ -263,7 +263,7 @@ export function QuizApp() {
         </div>
         
         {/* Bottom Links */}
-        <div className="flex justify-between items-center py-2 w-full px-2 flex-shrink-0" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}>
+        <div className="flex justify-between items-center py-2 w-full px-2 flex-shrink-0" style={{ paddingBottom: 'max(2rem, calc(env(safe-area-inset-bottom, 1rem) + 1rem))' }}>
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
