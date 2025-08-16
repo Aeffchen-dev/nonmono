@@ -251,32 +251,57 @@ export function QuizApp() {
       );
       setQuestions(filteredQuestions);
       
-      // Create slides with intro slides at the beginning
-      const introSlides: SlideItem[] = [
-        { type: 'intro', introType: 'welcome' },
-        { type: 'intro', introType: 'description' }
-      ];
+      // Check if we're filtering (not showing all categories)
+      const isFiltered = selectedCategories.length < availableCategories.length;
       
-      // Find and move the specific question to 3rd position for filtered questions too
-      const targetQuestionIndex = filteredQuestions.findIndex(q => 
-        q.question.includes("Was wünschst du dir von unserem heutigen Gespräch")
-      );
-      
-      let reorderedQuestions = [...filteredQuestions];
-      if (targetQuestionIndex !== -1) {
-        const [targetQ] = reorderedQuestions.splice(targetQuestionIndex, 1);
-        reorderedQuestions.unshift(targetQ); // Put it first in questions (3rd overall)
+      if (isFiltered) {
+        // Skip intro slides when filtering
+        // Find and move the specific question to first position
+        const targetQuestionIndex = filteredQuestions.findIndex(q => 
+          q.question.includes("Was wünschst du dir von unserem heutigen Gespräch")
+        );
+        
+        let reorderedQuestions = [...filteredQuestions];
+        if (targetQuestionIndex !== -1) {
+          const [targetQ] = reorderedQuestions.splice(targetQuestionIndex, 1);
+          reorderedQuestions.unshift(targetQ); // Put it first
+        }
+        
+        const questionSlides: SlideItem[] = reorderedQuestions.map(q => ({
+          type: 'question',
+          question: q
+        }));
+        
+        setSlides(questionSlides);
+      } else {
+        // Show intro slides when all categories are selected
+        const introSlides: SlideItem[] = [
+          { type: 'intro', introType: 'welcome' },
+          { type: 'intro', introType: 'description' }
+        ];
+        
+        // Find and move the specific question to 3rd position for all questions
+        const targetQuestionIndex = filteredQuestions.findIndex(q => 
+          q.question.includes("Was wünschst du dir von unserem heutigen Gespräch")
+        );
+        
+        let reorderedQuestions = [...filteredQuestions];
+        if (targetQuestionIndex !== -1) {
+          const [targetQ] = reorderedQuestions.splice(targetQuestionIndex, 1);
+          reorderedQuestions.unshift(targetQ); // Put it first in questions (3rd overall)
+        }
+        
+        const questionSlides: SlideItem[] = reorderedQuestions.map(q => ({
+          type: 'question',
+          question: q
+        }));
+        
+        setSlides([...introSlides, ...questionSlides]);
       }
       
-      const questionSlides: SlideItem[] = reorderedQuestions.map(q => ({
-        type: 'question',
-        question: q
-      }));
-      
-      setSlides([...introSlides, ...questionSlides]);
       setCurrentIndex(0); // Reset to first slide when filtering
     }
-  }, [selectedCategories, allQuestions]);
+  }, [selectedCategories, allQuestions, availableCategories.length]);
 
   const handleCategoriesChange = (categories: string[]) => {
     setSelectedCategories(categories);
