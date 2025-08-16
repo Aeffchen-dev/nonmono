@@ -28,30 +28,40 @@ export function CategorySelector({
 
   const getCategoryColors = (category: string) => {
     switch (category.toLowerCase()) {
-      case 'werte':
-        return 'border-l-quiz-werte-bg';
-      case 'bedürfnisse':
-        return 'border-l-quiz-bedürfnisse-bg';
-      case 'kommunikation':
-        return 'border-l-quiz-kommunikation-bg';
-      case 'motivation':
-        return 'border-l-quiz-motivation-bg';
-      case 'grenzen':
-        return 'border-l-quiz-grenzen-bg';
-      case 'vision':
-        return 'border-l-quiz-vision-bg';
-      case 'no go':
-        return 'border-l-quiz-no-go-bg';
-      case 'risiko':
-        return 'border-l-quiz-risiko-bg';
-      case 'regeln':
-        return 'border-l-quiz-regeln-bg';
-      case 'info':
-        return 'border-l-quiz-info-bg';
-      case 'reflexion':
-        return 'border-l-quiz-reflexion-bg';
-      case 'bindung':
-        return 'border-l-quiz-bindung-bg';
+      case 'fuck':
+        return 'border-l-quiz-fuck-bg';
+      case 'friends':
+        return 'border-l-quiz-friends-bg';
+      case 'family':
+        return 'border-l-quiz-family-bg';
+      case 'self reflection':
+        return 'border-l-quiz-self-reflection-bg';
+      case 'party':
+        return 'border-l-quiz-party-bg';
+      case 'connection':
+        return 'border-l-quiz-connection-bg';
+      case 'identity':
+        return 'border-l-quiz-identity-bg';
+      case 'career':
+        return 'border-l-quiz-career-bg';
+      case 'travel':
+        return 'border-l-quiz-travel-bg';
+      case 'health':
+        return 'border-l-quiz-health-bg';
+      case 'money':
+        return 'border-l-quiz-money-bg';
+      case 'love':
+        return 'border-l-quiz-love-bg';
+      case 'hobby':
+        return 'border-l-quiz-hobby-bg';
+      case 'dreams':
+        return 'border-l-quiz-dreams-bg';
+      case 'fear':
+        return 'border-l-quiz-fear-bg';
+      case 'wisdom':
+        return 'border-l-quiz-wisdom-bg';
+      case 'future':
+        return 'border-l-quiz-future-bg';
       default:
         return 'border-l-quiz-category-bg';
     }
