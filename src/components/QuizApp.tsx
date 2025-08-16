@@ -56,10 +56,27 @@ export function QuizApp() {
       }
       
       if (questions.length > 0) {
-        // Shuffle questions randomly
-        const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
-        setAllQuestions(shuffledQuestions);
-        setQuestions(shuffledQuestions);
+        // Separate Reflexion questions from others
+        const reflexionQuestions = questions.filter(q => q.category === 'Reflexion');
+        const otherQuestions = questions.filter(q => q.category !== 'Reflexion');
+        
+        // Shuffle both groups
+        const shuffledOthers = [...otherQuestions].sort(() => Math.random() - 0.5);
+        const shuffledReflexion = [...reflexionQuestions].sort(() => Math.random() - 0.5);
+        
+        // Calculate position for last third
+        const totalQuestions = questions.length;
+        const lastThirdStart = Math.floor(totalQuestions * 2 / 3);
+        
+        // Create ordered array: others first, then reflexion in last third
+        const orderedQuestions = [
+          ...shuffledOthers.slice(0, lastThirdStart),
+          ...shuffledReflexion,
+          ...shuffledOthers.slice(lastThirdStart)
+        ];
+        
+        setAllQuestions(orderedQuestions);
+        setQuestions(orderedQuestions);
         
         // Extract unique categories
         const categories = Array.from(new Set(questions.map(q => q.category)));
