@@ -133,7 +133,19 @@ export function QuizApp() {
           { type: 'intro', introType: 'description' }
         ];
         
-        const questionSlides: SlideItem[] = finalQuestions.map(q => ({
+        // Find and move the specific question to 3rd position
+        const targetQuestion = "Was erhoffst du dir von unserem heutigen Gespräch?";
+        const targetQuestionIndex = finalQuestions.findIndex(q => 
+          q.question.includes("Was erhoffst du dir von unserem heutigen Gespräch")
+        );
+        
+        let reorderedQuestions = [...finalQuestions];
+        if (targetQuestionIndex !== -1) {
+          const [targetQ] = reorderedQuestions.splice(targetQuestionIndex, 1);
+          reorderedQuestions.unshift(targetQ); // Put it first in questions (3rd overall)
+        }
+        
+        const questionSlides: SlideItem[] = reorderedQuestions.map(q => ({
           type: 'question',
           question: q
         }));
@@ -207,7 +219,18 @@ export function QuizApp() {
         { type: 'intro', introType: 'description' }
       ];
       
-      const questionSlides: SlideItem[] = filteredQuestions.map(q => ({
+      // Find and move the specific question to 3rd position for filtered questions too
+      const targetQuestionIndex = filteredQuestions.findIndex(q => 
+        q.question.includes("Was erhoffst du dir von unserem heutigen Gespräch")
+      );
+      
+      let reorderedQuestions = [...filteredQuestions];
+      if (targetQuestionIndex !== -1) {
+        const [targetQ] = reorderedQuestions.splice(targetQuestionIndex, 1);
+        reorderedQuestions.unshift(targetQ); // Put it first in questions (3rd overall)
+      }
+      
+      const questionSlides: SlideItem[] = reorderedQuestions.map(q => ({
         type: 'question',
         question: q
       }));
