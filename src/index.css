@@ -56,8 +56,8 @@ All colors MUST be HSL.
     --quiz-kommunikation-text: 0 0% 0%;   /* Black text on light green */
     --quiz-motivation-bg: 266 100% 51%;   /* Motivation: #7004FF */
     --quiz-motivation-text: 0 0% 98%;     /* White text on purple */
-    --quiz-grenzen-bg: 35 100% 62%;       /* Grenzen: #FFB23E */
-    --quiz-grenzen-text: 0 0% 0%;         /* Black text on orange */
+    --quiz-grenzen-bg: 0 100% 50%;        /* Grenzen: #FF0000 */
+    --quiz-grenzen-text: 0 0% 98%;        /* White text on red */
     --quiz-vision-bg: 185 72% 53%;        /* Vision: #28C8E4 */
     --quiz-vision-text: 0 0% 98%;         /* White text on cyan */
     --quiz-no-go-bg: 0 100% 50%;          /* No Go: #FF0000 */
