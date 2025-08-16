@@ -123,7 +123,7 @@ export function IntroSlide({ type, onSwipeLeft, onSwipeRight, animationClass = '
           </>
         ) : (
           /* Description slide */
-          <div className="flex-1 flex items-start justify-start pt-16">
+          <div className="flex-1 flex items-center justify-start">
             <p 
               className="text-foreground text-left leading-relaxed"
               style={{ fontFamily: 'Arial, sans-serif', fontSize: '12px' }}
