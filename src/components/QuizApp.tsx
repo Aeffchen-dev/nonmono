@@ -31,16 +31,28 @@ export function QuizApp() {
 
   const fetchQuestions = async () => {
     try {
-      // Convert Google Sheets URL to CSV export URL
-      const spreadsheetId = '1ocX6XRk_Y_HcUCg7hcjb1nHuoKqyBUc2KmWX9JNTXrU';
-      const csvUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=0`;
+      let csvText = '';
       
-      const response = await fetch(csvUrl);
-      if (!response.ok) {
-        throw new Error('Failed to fetch spreadsheet data');
+      try {
+        // Try Google Sheets first
+        const spreadsheetId = '1ocX6XRk_Y_HcUCg7hcjb1nHuoKqyBUc2KmWX9JNTXrU';
+        const csvUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=0`;
+        
+        const response = await fetch(csvUrl);
+        if (!response.ok) {
+          throw new Error('Failed to fetch spreadsheet data');
+        }
+        
+        csvText = await response.text();
+      } catch (sheetsError) {
+        console.log('Google Sheets failed, trying local CSV file:', sheetsError);
+        // Fallback to local CSV file
+        const localResponse = await fetch('/quiz_questions.csv');
+        if (!localResponse.ok) {
+          throw new Error('Failed to fetch local CSV data');
+        }
+        csvText = await localResponse.text();
       }
-      
-      const csvText = await response.text();
       
       // Parse CSV data (skip header row if exists)
       const lines = csvText.split('\n').filter(line => line.trim());
@@ -80,10 +92,36 @@ export function QuizApp() {
         values.push(current.trim());
         
         if (values.length >= 2 && values[0] && values[1]) {
-          questions.push({
-            category: values[0],
-            question: values[1]
-          });
+          // Check if first row is header
+          if (i === 0 && values[0].toLowerCase() === 'question') {
+            // Skip header row with structure: question,category
+            continue;
+          } else if (i === 0 && values[0].toLowerCase() === 'category') {
+            // Skip header row with structure: category,question
+            continue;
+          }
+          
+          // Determine structure based on first non-header row
+          if (values[0].toLowerCase() === 'question' || values[0].toLowerCase() === 'category') {
+            continue; // Skip if it's still a header
+          }
+          
+          // Check if this looks like a question (longer text) vs category (shorter text)
+          const isFirstFieldQuestion = values[0].length > values[1].length || values[0].includes('?');
+          
+          if (isFirstFieldQuestion) {
+            // Structure: question,category
+            questions.push({
+              question: values[0],
+              category: values[1]
+            });
+          } else {
+            // Structure: category,question
+            questions.push({
+              category: values[0],
+              question: values[1]
+            });
+          }
         }
       }
       
