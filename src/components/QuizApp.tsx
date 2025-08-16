@@ -225,7 +225,7 @@ export function QuizApp() {
     <div className="min-h-[100svh] h-[100svh] bg-background overflow-hidden flex flex-col" style={{ height: '100svh' }}>
       {/* App Header */}
       <div className="bg-black mt-4" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
-        <div className="flex justify-between items-center px-6 py-3">
+        <div className="flex justify-between items-center px-6">
           <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>non mono</h1>
           <button 
             onClick={() => setCategorySelectorOpen(true)}
@@ -263,7 +263,7 @@ export function QuizApp() {
         </div>
         
         {/* Bottom Links */}
-        <div className="flex justify-between items-center py-2 w-full px-2 flex-shrink-0 mb-4" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}>
+        <div className="flex justify-between items-center w-full px-2 flex-shrink-0 mb-4" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}>
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
