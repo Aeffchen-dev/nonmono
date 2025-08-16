@@ -310,8 +310,8 @@ export function QuizApp() {
   return (
     <div className="min-h-[100svh] h-[100svh] bg-background overflow-hidden flex flex-col" style={{ height: '100svh' }}>
       {/* App Header */}
-      <div className="bg-black mt-4" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
-        <div className="flex justify-between items-center px-6">
+      <div className="bg-black mt-4 flex items-center" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
+        <div className="flex justify-between items-center px-6 w-full">
           <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>non mono</h1>
           <button 
             onClick={() => setCategorySelectorOpen(true)}
