@@ -48,42 +48,30 @@ All colors MUST be HSL.
     --quiz-surface: 0 0% 12%;
     
     /* Category-specific colors */
-    --quiz-fuck-bg: 0 100% 50%;           /* Red #FF0000 */
-    --quiz-fuck-text: 0 0% 98%;           /* White text on red */
-    --quiz-connection-bg: 240 100% 50%;   /* Blue #0000FF */
-    --quiz-connection-text: 0 0% 100%;    /* White text on blue */
-    --quiz-identity-bg: 266 100% 51%;     /* Purple #7004FF */
-    --quiz-identity-text: 0 0% 98%;       /* White text on purple */
-    --quiz-party-bg: 60 100% 71%;         /* Yellow #FFFE6F */
-    --quiz-party-text: 0 0% 0%;           /* Black text on yellow */
-    
-    /* Additional categories with proper colors */
-    --quiz-friends-bg: 120 100% 50%;      /* Green #00FF00 */
-    --quiz-friends-text: 0 0% 0%;         /* Black text on green */
-    --quiz-self-reflection-bg: 195 100% 50%; /* Light blue #00BFFF */
-    --quiz-self-reflection-text: 0 0% 0%; /* Black text on light blue */
-    --quiz-family-bg: 30 100% 70%;        /* Orange #FFCC66 */
-    --quiz-family-text: 0 0% 0%;          /* Black text on orange */
-    --quiz-career-bg: 35 100% 62%;        /* Orange #FFB23E */
-    --quiz-career-text: 0 0% 0%;          /* Black text on orange */
-    --quiz-travel-bg: 92 100% 83%;        /* Light green #CCFFAC */
-    --quiz-travel-text: 0 0% 0%;          /* Black text on light green */
-    --quiz-health-bg: 330 84% 67%;        /* Pink */
-    --quiz-health-text: 0 0% 98%;         /* White text on pink */
-    --quiz-money-bg: 45 95% 55%;          /* Gold */
-    --quiz-money-text: 0 0% 0%;           /* Black text on gold */
-    --quiz-love-bg: 350 85% 60%;          /* Red */
-    --quiz-love-text: 0 0% 98%;           /* White text on red */
-    --quiz-hobby-bg: 25 60% 45%;          /* Brown */
-    --quiz-hobby-text: 0 0% 98%;          /* White text on brown */
-    --quiz-dreams-bg: 270 75% 65%;        /* Purple */
-    --quiz-dreams-text: 0 0% 98%;         /* White text on purple */
-    --quiz-fear-bg: 210 10% 40%;          /* Gray */
-    --quiz-fear-text: 0 0% 98%;           /* White text on gray */
-    --quiz-wisdom-bg: 239 84% 67%;        /* Indigo */
-    --quiz-wisdom-text: 0 0% 98%;         /* White text on indigo */
-    --quiz-future-bg: 199 89% 48%;        /* Sky blue */
-    --quiz-future-text: 0 0% 98%;         /* White text on sky blue */
+    --quiz-werte-bg: 78 37% 44%;          /* Werte: #6A9B45 */
+    --quiz-werte-text: 0 0% 98%;          /* White text on green */
+    --quiz-bedürfnisse-bg: 241 100% 50%;  /* Bedürfnisse: #0500FF */
+    --quiz-bedürfnisse-text: 0 0% 98%;    /* White text on blue */
+    --quiz-kommunikation-bg: 78 69% 58%;  /* Kommunikation: #9EE344 */
+    --quiz-kommunikation-text: 0 0% 0%;   /* Black text on light green */
+    --quiz-motivation-bg: 266 100% 51%;   /* Motivation: #7004FF */
+    --quiz-motivation-text: 0 0% 98%;     /* White text on purple */
+    --quiz-grenzen-bg: 35 100% 62%;       /* Grenzen: #FFB23E */
+    --quiz-grenzen-text: 0 0% 0%;         /* Black text on orange */
+    --quiz-vision-bg: 185 72% 53%;        /* Vision: #28C8E4 */
+    --quiz-vision-text: 0 0% 98%;         /* White text on cyan */
+    --quiz-no-go-bg: 0 100% 50%;          /* No Go: #FF0000 */
+    --quiz-no-go-text: 0 0% 98%;          /* White text on red */
+    --quiz-risiko-bg: 60 100% 71%;        /* Risiko: #FFFE6F */
+    --quiz-risiko-text: 0 0% 0%;          /* Black text on yellow */
+    --quiz-regeln-bg: 318 86% 75%;        /* Regeln: #FF92EF */
+    --quiz-regeln-text: 0 0% 0%;          /* Black text on pink */
+    --quiz-info-bg: 0 0% 100%;            /* Info: #FFFFFF */
+    --quiz-info-text: 0 0% 0%;            /* Black text on white */
+    --quiz-reflexion-bg: 166 80% 69%;     /* Reflexion: #72F1C0 */
+    --quiz-reflexion-text: 0 0% 0%;       /* Black text on cyan */
+    --quiz-bindung-bg: 270 75% 69%;       /* Bindung: #A572F1 */
+    --quiz-bindung-text: 0 0% 98%;        /* White text on purple */
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(290 100% 80%));
