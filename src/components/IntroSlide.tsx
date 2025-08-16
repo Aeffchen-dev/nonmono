@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 interface IntroSlideProps {
   type: 'welcome' | 'description';
@@ -13,44 +13,8 @@ export function IntroSlide({ type, onSwipeLeft, onSwipeRight, animationClass = '
   const [mouseStart, setMouseStart] = useState<number | null>(null);
   const [mouseEnd, setMouseEnd] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [fontSize, setFontSize] = useState(12);
-  const textRef = useRef<HTMLParagraphElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const minSwipeDistance = 50;
-
-  // Dynamic font sizing for description slide
-  useEffect(() => {
-    if (type === 'description' && textRef.current && containerRef.current) {
-      const adjustFontSize = () => {
-        const container = containerRef.current;
-        const text = textRef.current;
-        if (!container || !text) return;
-
-        const containerHeight = container.clientHeight - 32; // Account for padding
-        const containerWidth = container.clientWidth;
-        
-        let currentFontSize = 16; // Start with larger font
-        text.style.fontSize = `${currentFontSize}px`;
-        
-        // Decrease font size until text fits
-        while (text.scrollHeight > containerHeight && currentFontSize > 10) {
-          currentFontSize -= 0.5;
-          text.style.fontSize = `${currentFontSize}px`;
-        }
-        
-        setFontSize(currentFontSize);
-      };
-
-      const timeoutId = setTimeout(adjustFontSize, 100);
-      window.addEventListener('resize', adjustFontSize);
-      
-      return () => {
-        clearTimeout(timeoutId);
-        window.removeEventListener('resize', adjustFontSize);
-      };
-    }
-  }, [type]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
@@ -159,19 +123,12 @@ export function IntroSlide({ type, onSwipeLeft, onSwipeRight, animationClass = '
           </>
         ) : (
           /* Description slide */
-          <div ref={containerRef} className="flex-1 flex flex-col pt-16 pb-8 px-2">
+          <div className="flex-1 flex items-start justify-start pt-16">
             <p 
-              ref={textRef}
-              className="text-foreground text-left leading-relaxed flex-1"
-              style={{ 
-                fontFamily: 'Arial, sans-serif', 
-                fontSize: `${fontSize}px`,
-                lineHeight: '1.4'
-              }}
+              className="text-foreground text-left leading-relaxed"
+              style={{ fontFamily: 'Arial, sans-serif', fontSize: '12px' }}
             >
               In einer monogame Beziehung herrschen allgemein bekannte universelle Regeln. Wohingegen es für offenen Beziehungen keinen Standard gibt – ihr gestaltet eure Regeln selbst, so wie es zu euch passt. Dieses Kartenspiel unterstützt euch dabei, ins Gespräch zu kommen: über eure Wünsche, Motivation, Ängste, Bedürfnisse und Grenzen. Zwischendurch erhaltet ihr Impulse, die Nähe schaffen und eure Verbindung stärken. So entdeckt ihr Schritt für Schritt, ob sich eine offene Beziehung für euch richtig anfühlt und wie ihr sie gestalten wollt.
-              {"\n\n"}
-              Die Fragen sind zufällig angeordnet, wenn ihr Thema für Thema vorgehen möchtet könnt ihr über die Filterfunktion ein Thema auswählen.
             </p>
           </div>
         )}
