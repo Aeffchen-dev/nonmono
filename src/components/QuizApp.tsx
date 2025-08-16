@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
 import { QuizCard } from './QuizCard';
 import { CategorySelector } from './CategorySelector';
+import { IntroSlide } from './IntroSlide';
 
 interface Question {
   question: string;
   category: string;
+}
+
+interface SlideItem {
+  type: 'intro' | 'question';
+  introType?: 'welcome' | 'description';
+  question?: Question;
 }
 
 export function QuizApp() {
@@ -12,6 +19,7 @@ export function QuizApp() {
   const [animationClass, setAnimationClass] = useState('');
   const [questions, setQuestions] = useState<Question[]>([]);
   const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [slides, setSlides] = useState<SlideItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [categorySelectorOpen, setCategorySelectorOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -102,6 +110,19 @@ export function QuizApp() {
         setAllQuestions(orderedQuestions);
         setQuestions(orderedQuestions);
         
+        // Create slides with intro slides at the beginning
+        const introSlides: SlideItem[] = [
+          { type: 'intro', introType: 'welcome' },
+          { type: 'intro', introType: 'description' }
+        ];
+        
+        const questionSlides: SlideItem[] = orderedQuestions.map(q => ({
+          type: 'question',
+          question: q
+        }));
+        
+        setSlides([...introSlides, ...questionSlides]);
+        
         // Extract unique categories
         const categories = Array.from(new Set(questions.map(q => q.category)));
         setAvailableCategories(categories);
@@ -115,7 +136,7 @@ export function QuizApp() {
   };
 
   const nextQuestion = () => {
-    if (currentIndex < questions.length - 1) {
+    if (currentIndex < slides.length - 1) {
       setAnimationClass('animate-slide-out-left');
       setTimeout(() => {
         setCurrentIndex(prev => prev + 1);
@@ -153,12 +174,29 @@ export function QuizApp() {
   useEffect(() => {
     if (selectedCategories.length === 0) {
       setQuestions([]);
+      setSlides([
+        { type: 'intro', introType: 'welcome' },
+        { type: 'intro', introType: 'description' }
+      ]);
     } else {
       const filteredQuestions = allQuestions.filter(q => 
         selectedCategories.includes(q.category)
       );
       setQuestions(filteredQuestions);
-      setCurrentIndex(0); // Reset to first question when filtering
+      
+      // Create slides with intro slides at the beginning
+      const introSlides: SlideItem[] = [
+        { type: 'intro', introType: 'welcome' },
+        { type: 'intro', introType: 'description' }
+      ];
+      
+      const questionSlides: SlideItem[] = filteredQuestions.map(q => ({
+        type: 'question',
+        question: q
+      }));
+      
+      setSlides([...introSlides, ...questionSlides]);
+      setCurrentIndex(0); // Reset to first slide when filtering
     }
   }, [selectedCategories, allQuestions]);
 
@@ -188,13 +226,22 @@ export function QuizApp() {
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Lade Fragen...</div>
             </div>
-          ) : questions.length > 0 ? (
-            <QuizCard
-              question={questions[currentIndex]}
-              onSwipeLeft={nextQuestion}
-              onSwipeRight={prevQuestion}
-              animationClass={animationClass}
-            />
+          ) : slides.length > 0 ? (
+            slides[currentIndex].type === 'intro' ? (
+              <IntroSlide
+                type={slides[currentIndex].introType!}
+                onSwipeLeft={nextQuestion}
+                onSwipeRight={prevQuestion}
+                animationClass={animationClass}
+              />
+            ) : (
+              <QuizCard
+                question={slides[currentIndex].question!}
+                onSwipeLeft={nextQuestion}
+                onSwipeRight={prevQuestion}
+                animationClass={animationClass}
+              />
+            )
           ) : (
             <div className="h-full flex items-center justify-center">
               <div className="text-white text-xl">Keine Fragen verfügbar</div>
