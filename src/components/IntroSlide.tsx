@@ -107,7 +107,7 @@ export function IntroSlide({ type, onSwipeLeft, onSwipeRight, animationClass = '
                 className="text-3xl md:text-4xl lg:text-4xl font-bold text-foreground text-center leading-tight"
                 style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}
               >
-                Offene Beziehung - wie gehen wir das richtig an?
+                Offene Beziehung: Wie gehen wir das richtig an?
               </h1>
             </div>
             
