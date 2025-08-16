@@ -91,90 +91,65 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
   // Get category-specific colors
   const getCategoryColors = (category: string) => {
     switch (category.toLowerCase()) {
-      case 'fuck':
+      case 'werte':
         return {
-          bg: 'bg-quiz-fuck-bg',
-          text: 'text-quiz-fuck-text'
+          bg: 'bg-quiz-werte-bg',
+          text: 'text-quiz-werte-text'
         };
-      case 'friends':
+      case 'bedürfnisse':
         return {
-          bg: 'bg-quiz-friends-bg', 
-          text: 'text-quiz-friends-text'
+          bg: 'bg-quiz-bedürfnisse-bg',
+          text: 'text-quiz-bedürfnisse-text'
         };
-      case 'self reflection':
+      case 'kommunikation':
         return {
-          bg: 'bg-quiz-self-reflection-bg',
-          text: 'text-quiz-self-reflection-text'
+          bg: 'bg-quiz-kommunikation-bg',
+          text: 'text-quiz-kommunikation-text'
         };
-      case 'party':
+      case 'motivation':
         return {
-          bg: 'bg-quiz-party-bg',
-          text: 'text-quiz-party-text'
+          bg: 'bg-quiz-motivation-bg',
+          text: 'text-quiz-motivation-text'
         };
-      case 'family':
+      case 'grenzen':
         return {
-          bg: 'bg-quiz-family-bg',
-          text: 'text-quiz-family-text'
+          bg: 'bg-quiz-grenzen-bg',
+          text: 'text-quiz-grenzen-text'
         };
-      case 'connection':
+      case 'vision':
         return {
-          bg: 'bg-quiz-connection-bg',
-          text: 'text-quiz-connection-text'
+          bg: 'bg-quiz-vision-bg',
+          text: 'text-quiz-vision-text'
         };
-      case 'identity':
+      case 'no go':
         return {
-          bg: 'bg-quiz-identity-bg',
-          text: 'text-quiz-identity-text'
+          bg: 'bg-quiz-no-go-bg',
+          text: 'text-quiz-no-go-text'
         };
-      case 'career':
+      case 'risiko':
         return {
-          bg: 'bg-quiz-career-bg',
-          text: 'text-quiz-career-text'
+          bg: 'bg-quiz-risiko-bg',
+          text: 'text-quiz-risiko-text'
         };
-      case 'travel':
+      case 'regeln':
         return {
-          bg: 'bg-quiz-travel-bg',
-          text: 'text-quiz-travel-text'
+          bg: 'bg-quiz-regeln-bg',
+          text: 'text-quiz-regeln-text'
         };
-      case 'health':
+      case 'info':
         return {
-          bg: 'bg-quiz-health-bg',
-          text: 'text-quiz-health-text'
+          bg: 'bg-quiz-info-bg',
+          text: 'text-quiz-info-text'
         };
-      case 'money':
+      case 'reflexion':
         return {
-          bg: 'bg-quiz-money-bg',
-          text: 'text-quiz-money-text'
+          bg: 'bg-quiz-reflexion-bg',
+          text: 'text-quiz-reflexion-text'
         };
-      case 'love':
+      case 'bindung':
         return {
-          bg: 'bg-quiz-love-bg',
-          text: 'text-quiz-love-text'
-        };
-      case 'hobby':
-        return {
-          bg: 'bg-quiz-hobby-bg',
-          text: 'text-quiz-hobby-text'
-        };
-      case 'dreams':
-        return {
-          bg: 'bg-quiz-dreams-bg',
-          text: 'text-quiz-dreams-text'
-        };
-      case 'fear':
-        return {
-          bg: 'bg-quiz-fear-bg',
-          text: 'text-quiz-fear-text'
-        };
-      case 'wisdom':
-        return {
-          bg: 'bg-quiz-wisdom-bg',
-          text: 'text-quiz-wisdom-text'
-        };
-      case 'future':
-        return {
-          bg: 'bg-quiz-future-bg',
-          text: 'text-quiz-future-text'
+          bg: 'bg-quiz-bindung-bg',
+          text: 'text-quiz-bindung-text'
         };
       default:
         return {
