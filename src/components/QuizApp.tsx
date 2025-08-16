@@ -171,10 +171,10 @@ export function QuizApp() {
       {/* App Header */}
       <div className="bg-black">
         <div className="flex justify-between items-center px-6 py-3">
-          <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>Open Relationship</h1>
-          <button
+          <h1 className="text-white font-kokoro text-lg" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>Open Relationship</h1>
+          <button 
             onClick={() => setCategorySelectorOpen(true)}
-            className="text-white font-normal text-xs"
+            className="text-white font-normal text-xs flex items-center"
           >
             Kategorien wählen
           </button>
