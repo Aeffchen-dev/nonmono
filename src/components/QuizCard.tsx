@@ -223,8 +223,8 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
     <div 
       className={`relative w-full max-w-[500px] mx-auto bg-[hsl(var(--card-background))] rounded-2xl shadow-card overflow-hidden select-none max-h-full ${animationClass}`}
       style={{
-        height: 'min(150vw, 90dvh, 90svh, 780px)',
-        maxHeight: 'min(100%, 90dvh, 90svh)'
+        height: 'min(150vw, 75dvh, 75svh, 650px)',
+        maxHeight: 'min(100%, 75dvh, 75svh)'
       }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
