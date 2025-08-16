@@ -285,6 +285,7 @@ export function QuizCard({ question, onSwipeLeft, onSwipeRight, animationClass =
           <h1 
             ref={textRef}
             className="text-3xl md:text-4xl lg:text-4xl font-normal text-foreground leading-tight w-full max-w-full" 
+            style={{ fontFamily: 'Arial, sans-serif' }}
           >
             {processedText.length > 0 ? processedText : question.question}
           </h1>
