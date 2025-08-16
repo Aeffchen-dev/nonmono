@@ -42,10 +42,34 @@ export function QuizApp() {
         const line = lines[i].trim();
         if (!line) continue;
         
-        // Parse CSV line (handle quoted values)
-        const values = line.split(',').map(value => 
-          value.trim().replace(/^"(.*)"$/, '$1')
-        );
+        // Proper CSV parsing to handle quoted fields with commas
+        const values: string[] = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let j = 0; j < line.length; j++) {
+          const char = line[j];
+          
+          if (char === '"') {
+            if (inQuotes && line[j + 1] === '"') {
+              // Escaped quote
+              current += '"';
+              j++; // Skip next quote
+            } else {
+              // Toggle quote state
+              inQuotes = !inQuotes;
+            }
+          } else if (char === ',' && !inQuotes) {
+            // Field separator outside quotes
+            values.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        
+        // Add the last field
+        values.push(current.trim());
         
         if (values.length >= 2 && values[0] && values[1]) {
           questions.push({
