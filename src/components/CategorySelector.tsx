@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, Check } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Checkbox } from '@/components/ui/checkbox';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface CategorySelectorProps {
   open: boolean;
@@ -107,8 +108,9 @@ export function CategorySelector({
           </DialogHeader>
 
           {/* Categories List */}
-          <div className="flex-1 px-6 pt-20 space-y-3 overflow-y-auto">
-            {categories.map((category) => {
+          <ScrollArea className="flex-1 pt-20">
+            <div className="px-6 space-y-3 pb-6">
+              {categories.map((category) => {
               const isSelected = tempSelection.includes(category);
               const colorClasses = getCategoryColors(category);
               
@@ -153,9 +155,10 @@ export function CategorySelector({
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </ScrollArea>
         </div>
       </DialogContent>
     </Dialog>
