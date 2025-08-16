@@ -71,7 +71,7 @@ All colors MUST be HSL.
     --quiz-reflexion-bg: 166 80% 69%;     /* Reflexion: #72F1C0 */
     --quiz-reflexion-text: 0 0% 0%;       /* Black text on cyan */
     --quiz-bindung-bg: 270 75% 69%;       /* Bindung: #A572F1 */
-    --quiz-bindung-text: 0 0% 98%;        /* White text on purple */
+    --quiz-bindung-text: 0 0% 0%;         /* Black text on purple */
     
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(280 100% 70%), hsl(290 100% 80%));
