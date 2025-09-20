@@ -310,7 +310,7 @@ export function QuizApp() {
   return (
     <div className="h-screen max-h-screen bg-background overflow-hidden flex flex-col" style={{ height: '100vh', maxHeight: '100vh' }}>
       {/* App Header - Fixed height */}
-      <div className="bg-black flex items-center flex-shrink-0" style={{ paddingTop: 'env(safe-area-inset-top, 0)', paddingBottom: '1rem' }}>
+      <div className="bg-black flex items-center flex-shrink-0" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top, 1rem))', paddingBottom: '1rem' }}>
         <div className="flex justify-between items-baseline px-6 w-full">
           <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>non mono</h1>
           <button 
