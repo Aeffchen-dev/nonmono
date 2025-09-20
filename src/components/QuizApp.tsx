@@ -308,9 +308,9 @@ export function QuizApp() {
   };
 
   return (
-    <div className="min-h-[100svh] h-[100svh] bg-background overflow-hidden flex flex-col" style={{ height: '100svh' }}>
-      {/* App Header */}
-      <div className="bg-black mt-4 flex items-center" style={{ paddingTop: 'env(safe-area-inset-top, 0)' }}>
+    <div className="h-screen max-h-screen bg-background overflow-hidden flex flex-col" style={{ height: '100vh', maxHeight: '100vh' }}>
+      {/* App Header - Fixed height */}
+      <div className="bg-black flex items-center flex-shrink-0" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top, 1rem))', paddingBottom: '1rem' }}>
         <div className="flex justify-between items-baseline px-6 w-full">
           <h1 className="text-white font-kokoro text-2xl" style={{ fontFamily: 'Kokoro, serif', fontWeight: 'bold', fontStyle: 'italic' }}>non mono</h1>
           <button 
@@ -322,9 +322,9 @@ export function QuizApp() {
         </div>
       </div>
 
-      {/* Main Quiz Container */}
-      <div className="flex-1 flex flex-col px-4 overflow-hidden mt-4 gap-4" style={{ minHeight: 0 }}>
-        <div className="flex-1 flex items-stretch justify-center min-h-0">
+      {/* Main Quiz Container - Flexible height to fill remaining space */}
+      <div className="flex-1 flex flex-col px-4 overflow-hidden" style={{ minHeight: 0 }}>
+        <div className="flex-1 flex items-center justify-center" style={{ minHeight: 0 }}>
           {loading ? (
             <div className="flex items-center justify-center h-full text-white text-xl">Lade Fragen...</div>
           ) : slides.length > 0 ? (
@@ -348,8 +348,8 @@ export function QuizApp() {
           )}
         </div>
         
-        {/* Bottom Links */}
-        <div className="flex justify-between items-center w-full px-2 flex-shrink-0 mb-4" style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}>
+        {/* Bottom Links - Fixed height */}
+        <div className="flex justify-between items-center w-full px-2 flex-shrink-0" style={{ paddingTop: '1rem', paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))' }}>
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
