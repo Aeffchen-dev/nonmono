@@ -349,7 +349,7 @@ export function QuizApp() {
         </div>
         
         {/* Bottom Links - Fixed height */}
-        <div className="flex justify-between items-center w-full px-2 flex-shrink-0" style={{ paddingTop: '1rem', paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 1rem))' }}>
+        <div className="flex justify-between items-center w-full px-2 flex-shrink-0" style={{ paddingTop: '1rem', paddingBottom: 'max(2rem, calc(env(safe-area-inset-bottom, 1rem) + 1rem))' }}>
           <a 
             href="https://relationshipbydesign.de/" 
             className="text-white font-normal text-xs"
